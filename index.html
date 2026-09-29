@@ -21,66 +21,119 @@
             font-family: Arial, sans-serif;
             background: #0b0d10;
             color: white;
+            line-height: 1.6;
         }
+
+        a {
+            color: inherit;
+        }
+
+        /* =========================
+           HEADER
+        ========================= */
 
         header {
             position: fixed;
             top: 0;
+            left: 0;
             width: 100%;
-            padding: 20px 7%;
-            background: rgba(10,10,10,0.9);
-            backdrop-filter: blur(10px);
-            z-index: 100;
+            padding: 18px 7%;
+            background: rgba(8, 9, 11, 0.92);
+            backdrop-filter: blur(12px);
+            z-index: 1000;
+
             display: flex;
             justify-content: space-between;
             align-items: center;
+
+            border-bottom: 1px solid rgba(255,255,255,0.05);
         }
 
         .logo {
             font-size: 25px;
-            font-weight: bold;
+            font-weight: 900;
+            letter-spacing: 1px;
         }
 
         .logo span {
             color: #ff3b30;
         }
 
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+        }
+
         nav a {
-            color: white;
+            color: #ddd;
             text-decoration: none;
-            margin-left: 25px;
+            font-size: 15px;
+            transition: 0.3s;
         }
 
         nav a:hover {
             color: #ff3b30;
         }
 
+        .header-button {
+            background: #ff3b30;
+            padding: 10px 18px;
+            border-radius: 6px;
+            color: white !important;
+            font-weight: bold;
+        }
+
+        .header-button:hover {
+            background: #e52d24;
+        }
+
+        /* MOBILE MENU */
+
+        .menu-button {
+            display: none;
+            font-size: 28px;
+            cursor: pointer;
+            color: white;
+        }
+
+        /* =========================
+           HERO
+        ========================= */
+
         .hero {
             min-height: 100vh;
+
             display: flex;
             align-items: center;
-            padding: 120px 7% 60px;
+
+            padding: 130px 7% 70px;
 
             background:
-                linear-gradient(90deg, rgba(0,0,0,.9), rgba(0,0,0,.35)),
+                linear-gradient(
+                    90deg,
+                    rgba(0,0,0,0.92),
+                    rgba(0,0,0,0.45)
+                ),
                 url("https://images.unsplash.com/photo-1487754180451-c456f719a1fc?auto=format&fit=crop&w=2000&q=80")
                 center/cover;
         }
 
         .hero-content {
-            max-width: 700px;
+            max-width: 750px;
         }
 
         .tag {
             color: #ff3b30;
             font-weight: bold;
-            letter-spacing: 3px;
-            margin-bottom: 20px;
+            letter-spacing: 4px;
+            margin-bottom: 18px;
+            text-transform: uppercase;
         }
 
         h1 {
-            font-size: clamp(45px, 7vw, 80px);
-            line-height: 1;
+            font-size: clamp(48px, 7vw, 82px);
+            line-height: 0.98;
             margin-bottom: 25px;
         }
 
@@ -89,9 +142,16 @@
         }
 
         .hero p {
-            font-size: 19px;
             color: #ccc;
-            margin-bottom: 30px;
+            font-size: 19px;
+            max-width: 650px;
+            margin-bottom: 32px;
+        }
+
+        .buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
         }
 
         .button {
@@ -102,11 +162,12 @@
             text-decoration: none;
             border-radius: 6px;
             font-weight: bold;
-            margin-right: 10px;
+            transition: 0.3s;
         }
 
         .button:hover {
             background: #e52d24;
+            transform: translateY(-2px);
         }
 
         .button-dark {
@@ -114,24 +175,45 @@
             border: 1px solid #777;
         }
 
+        .button-dark:hover {
+            background: white;
+            color: black;
+            border-color: white;
+        }
+
+        /* =========================
+           GENERAL
+        ========================= */
+
         section {
-            padding: 90px 7%;
+            padding: 100px 7%;
         }
 
         .section-title {
             text-align: center;
-            margin-bottom: 50px;
+            margin-bottom: 55px;
         }
 
         .section-title small {
             color: #ff3b30;
             font-weight: bold;
+            letter-spacing: 2px;
         }
 
         .section-title h2 {
             font-size: 45px;
-            margin-top: 10px;
+            margin-top: 8px;
         }
+
+        .section-title p {
+            max-width: 650px;
+            margin: 15px auto 0;
+            color: #999;
+        }
+
+        /* =========================
+           SERVICES
+        ========================= */
 
         .services {
             background: #111419;
@@ -140,6 +222,7 @@
         .cards {
             max-width: 1200px;
             margin: auto;
+
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 20px;
@@ -147,33 +230,42 @@
 
         .card {
             background: #191d22;
-            padding: 30px;
+            padding: 32px;
             border-radius: 12px;
             border: 1px solid #292d33;
-            transition: .3s;
+
+            transition: 0.3s;
         }
 
         .card:hover {
             transform: translateY(-8px);
             border-color: #ff3b30;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
         }
 
         .icon {
-            font-size: 35px;
+            font-size: 38px;
             margin-bottom: 20px;
         }
 
         .card h3 {
             margin-bottom: 12px;
+            font-size: 21px;
         }
 
         .card p {
             color: #999;
+            font-size: 15px;
         }
+
+        /* =========================
+           ABOUT
+        ========================= */
 
         .about {
             max-width: 1200px;
             margin: auto;
+
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 60px;
@@ -185,12 +277,17 @@
             border-radius: 15px;
 
             background:
+                linear-gradient(
+                    rgba(0,0,0,0.15),
+                    rgba(0,0,0,0.15)
+                ),
                 url("https://images.unsplash.com/photo-1503736334956-4c8f8e92946d?auto=format&fit=crop&w=1200&q=80")
                 center/cover;
         }
 
         .about-text h2 {
             font-size: 45px;
+            line-height: 1.1;
             margin-bottom: 20px;
         }
 
@@ -201,10 +298,12 @@
 
         .checks {
             list-style: none;
+            margin-top: 25px;
         }
 
         .checks li {
-            margin: 12px 0;
+            margin: 13px 0;
+            color: #ddd;
         }
 
         .checks li::before {
@@ -214,6 +313,10 @@
             margin-right: 10px;
         }
 
+        /* =========================
+           PRICES
+        ========================= */
+
         .prices {
             background: #111419;
         }
@@ -221,15 +324,21 @@
         .price-list {
             max-width: 800px;
             margin: auto;
+
             background: #191d22;
             border-radius: 12px;
             overflow: hidden;
+
+            border: 1px solid #292d33;
         }
 
         .price {
             display: flex;
             justify-content: space-between;
+            align-items: center;
+
             padding: 22px 30px;
+
             border-bottom: 1px solid #292d33;
         }
 
@@ -237,20 +346,149 @@
             border: none;
         }
 
+        .price span {
+            color: #ddd;
+        }
+
         .price strong {
             color: #ff3b30;
+            font-size: 18px;
         }
+
+        /* =========================
+           REVIEWS
+        ========================= */
+
+        .reviews {
+            background: #0b0d10;
+        }
+
+        .review-grid {
+            max-width: 1100px;
+            margin: auto;
+
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .review {
+            background: #15191e;
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px solid #292d33;
+        }
+
+        .stars {
+            color: #ff3b30;
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+
+        .review p {
+            color: #bbb;
+            margin-bottom: 20px;
+        }
+
+        .review strong {
+            color: white;
+        }
+
+        /* =========================
+           APPOINTMENT
+        ========================= */
+
+        .appointment {
+            background: #111419;
+        }
+
+        .appointment-box {
+            max-width: 900px;
+            margin: auto;
+
+            background: #191d22;
+            padding: 40px;
+
+            border-radius: 15px;
+            border: 1px solid #292d33;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .form-group.full {
+            grid-column: 1 / -1;
+        }
+
+        label {
+            color: #ccc;
+            font-size: 14px;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+
+            padding: 14px 15px;
+
+            background: #0d0f12;
+            color: white;
+
+            border: 1px solid #30343a;
+            border-radius: 6px;
+
+            outline: none;
+            font-family: inherit;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            border-color: #ff3b30;
+        }
+
+        textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .form-button {
+            margin-top: 20px;
+            width: 100%;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        /* =========================
+           CONTACT
+        ========================= */
 
         .contact {
             text-align: center;
+
             background:
-                linear-gradient(rgba(180,20,15,.9), rgba(100,10,5,.9)),
+                linear-gradient(
+                    rgba(180,20,15,0.9),
+                    rgba(100,10,5,0.9)
+                ),
                 url("https://images.unsplash.com/photo-1487754180451-c456f719a1fc?auto=format&fit=crop&w=1800&q=80")
                 center/cover;
         }
 
         .contact h2 {
             font-size: 50px;
+            line-height: 1.1;
             margin-bottom: 20px;
         }
 
@@ -259,21 +497,49 @@
             color: #eee;
         }
 
+        .contact-phone {
+            display: inline-block;
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 25px;
+            text-decoration: none;
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
+
         footer {
-            padding: 30px 7%;
+            padding: 35px 7%;
             text-align: center;
             background: #070809;
             color: #777;
         }
 
-        @media(max-width: 800px) {
+        footer strong {
+            color: #aaa;
+        }
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 900px) {
 
             nav {
                 display: none;
             }
 
+            .menu-button {
+                display: block;
+            }
+
             .cards {
-                grid-template-columns: 1fr;
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .review-grid {
+                grid-template-columns: 1fr 1fr;
             }
 
             .about {
@@ -281,7 +547,43 @@
             }
 
             .about-image {
-                min-height: 300px;
+                min-height: 350px;
+            }
+        }
+
+        @media (max-width: 650px) {
+
+            header {
+                padding: 17px 5%;
+            }
+
+            .hero {
+                padding-left: 5%;
+                padding-right: 5%;
+            }
+
+            section {
+                padding: 75px 5%;
+            }
+
+            .cards {
+                grid-template-columns: 1fr;
+            }
+
+            .review-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-group.full {
+                grid-column: auto;
+            }
+
+            .appointment-box {
+                padding: 25px;
             }
 
             .section-title h2,
@@ -292,13 +594,22 @@
             .contact h2 {
                 font-size: 38px;
             }
+
+            .price {
+                padding: 18px;
+            }
         }
     </style>
 </head>
 
 <body>
 
+<!-- ==========================================
+     HEADER
+========================================== -->
+
 <header>
+
     <div class="logo">
         APEX<span>AUTO</span>
     </div>
@@ -307,16 +618,31 @@
         <a href="#services">Услуги</a>
         <a href="#about">За нас</a>
         <a href="#prices">Цени</a>
-        <a href="#contact">Контакти</a>
+        <a href="#reviews">Отзиви</a>
+        <a href="#appointment">Запази час</a>
+
+        <a href="tel:0888123456" class="header-button">
+            0888 123 456
+        </a>
     </nav>
+
+    <div class="menu-button">
+        ☰
+    </div>
+
 </header>
+
+
+<!-- ==========================================
+     HERO
+========================================== -->
 
 <section class="hero">
 
     <div class="hero-content">
 
         <div class="tag">
-            АВТОСЕРВИЗ • СТАРА ЗАГОРА
+            Автосервиз • Стара Загора
         </div>
 
         <h1>
@@ -326,87 +652,139 @@
 
         <p>
             Професионална диагностика, ремонт и поддръжка
-            на автомобили с внимание към всеки детайл.
+            на автомобили. Бързо, качествено и коректно.
         </p>
 
-        <a class="button" href="#contact">
-            Запази час →
-        </a>
+        <div class="buttons">
 
-        <a class="button button-dark" href="tel:0888123456">
-            📞 0888 123 456
-        </a>
+            <a href="#appointment" class="button">
+                Запази час →
+            </a>
+
+            <a href="tel:0888123456" class="button button-dark">
+                📞 0888 123 456
+            </a>
+
+        </div>
 
     </div>
 
 </section>
+
+
+<!-- ==========================================
+     SERVICES
+========================================== -->
 
 <section class="services" id="services">
 
     <div class="section-title">
-        <small>КАКВО ПРЕДЛАГАМЕ</small>
+
+        <small>КАКВО ПРАВИМ</small>
+
         <h2>Нашите услуги</h2>
+
+        <p>
+            Всичко необходимо за поддръжката и ремонта
+            на твоя автомобил на едно място.
+        </p>
+
     </div>
+
 
     <div class="cards">
 
         <div class="card">
+
             <div class="icon">🔧</div>
-            <h3>Автодиагностика</h3>
+
+            <h3>Автомобилна диагностика</h3>
+
             <p>
                 Компютърна диагностика и откриване
                 на проблеми по автомобила.
             </p>
+
         </div>
 
+
         <div class="card">
+
             <div class="icon">🛢️</div>
+
             <h3>Масла и филтри</h3>
+
             <p>
-                Смяна на масло, маслен, въздушен
-                и купе филтър.
+                Смяна на двигателно масло,
+                маслени, въздушни и горивни филтри.
             </p>
+
         </div>
 
+
         <div class="card">
-            <div class="icon">🛞</div>
+
+            <div class="icon">🚗</div>
+
             <h3>Гуми и баланс</h3>
+
             <p>
-                Монтаж, демонтаж, баланс и сезонна
-                смяна на гуми.
+                Смяна на гуми, баланс и проверка
+                на състоянието на колелата.
             </p>
+
         </div>
 
+
         <div class="card">
+
             <div class="icon">⚙️</div>
+
             <h3>Ходова част</h3>
+
             <p>
                 Проверка и ремонт на окачване,
                 амортисьори и кормилна система.
             </p>
+
         </div>
 
+
         <div class="card">
+
             <div class="icon">🛑</div>
+
             <h3>Спирачна система</h3>
+
             <p>
                 Смяна на накладки, дискове и
-                компоненти на спирачната система.
+                обслужване на спирачната система.
             </p>
+
         </div>
 
+
         <div class="card">
+
             <div class="icon">❄️</div>
+
             <h3>Автоклиматик</h3>
+
             <p>
-                Проверка, обслужване и диагностика
+                Проверка, диагностика и обслужване
                 на климатичната система.
             </p>
+
         </div>
 
     </div>
 
 </section>
+
+
+<!-- ==========================================
+     ABOUT
+========================================== -->
 
 <section id="about">
 
@@ -416,24 +794,38 @@
 
         <div class="about-text">
 
-            <div class="tag">ЗА НАС</div>
+            <small class="tag">
+                ЗА НАС
+            </small>
 
             <h2>
-                Повече от сервиз.<br>
-                Доверие.
+                Автомобилът ти е в добри ръце.
             </h2>
 
             <p>
-                APEX AUTO е професионален автосервиз
-                в Стара Загора, специализиран в
-                диагностика, ремонт и профилактика.
+                В APEX AUTO вярваме, че добрият автосервиз
+                означава качествена работа, честно отношение
+                и ясни цени.
+            </p>
+
+            <p>
+                Работим с внимание към всеки автомобил
+                и използваме съвременна диагностична
+                техника.
             </p>
 
             <ul class="checks">
-                <li>Професионално оборудване</li>
+
+                <li>Професионална диагностика</li>
+
+                <li>Опитни специалисти</li>
+
+                <li>Качествени консумативи</li>
+
                 <li>Прозрачни цени</li>
-                <li>Индивидуален подход</li>
-                <li>Качествено обслужване</li>
+
+                <li>Коректно отношение</li>
+
             </ul>
 
         </div>
@@ -442,22 +834,46 @@
 
 </section>
 
+
+<!-- ==========================================
+     PRICES
+========================================== -->
+
 <section class="prices" id="prices">
 
     <div class="section-title">
-        <small>ОРИЕНТИРОВЪЧНИ ЦЕНИ</small>
-        <h2>Ценоразпис</h2>
+
+        <small>ЦЕНОРАЗПИС</small>
+
+        <h2>Ориентировъчни цени</h2>
+
+        <p>
+            Крайната цена може да бъде уточнена
+            след преглед на автомобила.
+        </p>
+
     </div>
+
 
     <div class="price-list">
 
         <div class="price">
             <span>Компютърна диагностика</span>
-            <strong>от 30 €</strong>
+            <strong>от 20 €</strong>
         </div>
 
         <div class="price">
             <span>Смяна на масло</span>
+            <strong>от 15 €</strong>
+        </div>
+
+        <div class="price">
+            <span>Смяна на гуми</span>
+            <strong>от 25 €</strong>
+        </div>
+
+        <div class="price">
+            <span>Баланс на гуми</span>
             <strong>от 15 €</strong>
         </div>
 
@@ -467,43 +883,341 @@
         </div>
 
         <div class="price">
-            <span>Баланс на гуми</span>
-            <strong>от 20 €</strong>
-        </div>
-
-        <div class="price">
-            <span>Сезонна смяна на гуми</span>
-            <strong>от 25 €</strong>
+            <span>Проверка на ходова част</span>
+            <strong>от 15 €</strong>
         </div>
 
     </div>
 
 </section>
 
+
+<!-- ==========================================
+     REVIEWS
+========================================== -->
+
+<section class="reviews" id="reviews">
+
+    <div class="section-title">
+
+        <small>НАШИТЕ КЛИЕНТИ</small>
+
+        <h2>Какво казват клиентите</h2>
+
+    </div>
+
+
+    <div class="review-grid">
+
+        <div class="review">
+
+            <div class="stars">
+                ★★★★★
+            </div>
+
+            <p>
+                „Много коректни и бързи. Обясниха ми
+                какъв е проблемът и го отстраниха.“
+            </p>
+
+            <strong>— Иван П.</strong>
+
+        </div>
+
+
+        <div class="review">
+
+            <div class="stars">
+                ★★★★★
+            </div>
+
+            <p>
+                „Оставих колата сутринта и следобед
+                беше готова. Определено бих се върнал.“
+            </p>
+
+            <strong>— Георги Д.</strong>
+
+        </div>
+
+
+        <div class="review">
+
+            <div class="stars">
+                ★★★★★
+            </div>
+
+            <p>
+                „Добри цени и професионално отношение.
+                Препоръчвам.“
+            </p>
+
+            <strong>— Николай С.</strong>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ==========================================
+     APPOINTMENT
+========================================== -->
+
+<section class="appointment" id="appointment">
+
+    <div class="section-title">
+
+        <small>ЗАПАЗИ ЧАС</small>
+
+        <h2>Изпрати запитване</h2>
+
+        <p>
+            Попълни формата и ще се свържем с теб
+            за потвърждение.
+        </p>
+
+    </div>
+
+
+    <div class="appointment-box">
+
+        <form action="mailto:example@email.com"
+              method="post"
+              enctype="text/plain">
+
+            <div class="form-grid">
+
+                <div class="form-group">
+
+                    <label for="name">
+                        Име
+                    </label>
+
+                    <input
+                        type="text"
+                        id="name"
+                        name="Име"
+                        placeholder="Твоето име"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="phone">
+                        Телефон
+                    </label>
+
+                    <input
+                        type="tel"
+                        id="phone"
+                        name="Телефон"
+                        placeholder="0888 123 456"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="car">
+                        Автомобил
+                    </label>
+
+                    <input
+                        type="text"
+                        id="car"
+                        name="Автомобил"
+                        placeholder="Напр. BMW 320d"
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="service">
+                        Услуга
+                    </label>
+
+                    <select id="service" name="Услуга">
+
+                        <option>
+                            Избери услуга
+                        </option>
+
+                        <option>
+                            Диагностика
+                        </option>
+
+                        <option>
+                            Смяна на масло
+                        </option>
+
+                        <option>
+                            Гуми и баланс
+                        </option>
+
+                        <option>
+                            Ходова част
+                        </option>
+
+                        <option>
+                            Спирачна система
+                        </option>
+
+                        <option>
+                            Автоклиматик
+                        </option>
+
+                        <option>
+                            Друго
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-group full">
+
+                    <label for="message">
+                        Допълнителна информация
+                    </label>
+
+                    <textarea
+                        id="message"
+                        name="Съобщение"
+                        placeholder="Опиши проблема или какво искаш да бъде извършено..."
+                    ></textarea>
+
+                </div>
+
+            </div>
+
+
+            <button
+                type="submit"
+                class="button form-button"
+            >
+                Изпрати запитване →
+            </button>
+
+        </form>
+
+    </div>
+
+</section>
+
+
+<!-- ==========================================
+     CONTACT
+========================================== -->
+
 <section class="contact" id="contact">
 
     <h2>
-        Готови ли сте за<br>
-        следващия ремонт?
+        Готови сме да помогнем.
     </h2>
 
     <p>
-        Свържете се с нас и запазете час.
+        Свържи се с нас и запази час за твоя автомобил.
     </p>
 
-    <a class="button" href="tel:0888123456">
+    <a
+        href="tel:0888123456"
+        class="contact-phone"
+    >
         📞 0888 123 456
     </a>
 
-    <a class="button button-dark" href="#">
-        📍 Стара Загора
+    <br>
+
+    <a
+        href="#appointment"
+        class="button"
+    >
+        Запази час →
     </a>
 
 </section>
 
+
+<!-- ==========================================
+     FOOTER
+========================================== -->
+
 <footer>
-    © 2026 APEX AUTO • Стара Загора
+
+    © 2026
+    <strong>APEX AUTO</strong>
+    • Стара Загора
+
+    <br><br>
+
+    Автосервиз • Диагностика • Ремонт • Поддръжка
+
 </footer>
+
+
+<!-- ==========================================
+     MOBILE MENU SCRIPT
+========================================== -->
+
+<script>
+
+    const menuButton = document.querySelector(".menu-button");
+    const nav = document.querySelector("nav");
+
+    menuButton.addEventListener("click", function () {
+
+        if (nav.style.display === "flex") {
+
+            nav.style.display = "none";
+
+        } else {
+
+            nav.style.display = "flex";
+
+            nav.style.position = "absolute";
+            nav.style.top = "70px";
+            nav.style.left = "0";
+            nav.style.width = "100%";
+
+            nav.style.background = "#0b0d10";
+
+            nav.style.padding = "25px";
+
+            nav.style.flexDirection = "column";
+            nav.style.gap = "20px";
+
+        }
+
+    });
+
+
+    const navLinks = document.querySelectorAll("nav a");
+
+    navLinks.forEach(function(link) {
+
+        link.addEventListener("click", function() {
+
+            if (window.innerWidth <= 900) {
+
+                nav.style.display = "none";
+
+            }
+
+        });
+
+    });
+
+</script>
 
 </body>
 </html>
