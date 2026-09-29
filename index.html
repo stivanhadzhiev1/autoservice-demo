@@ -4,9 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>APEX AUTO | Автосервиз Стара Загора</title>
+    <title id="page-title">APEX AUTO | Автосервиз</title>
 
     <style>
+        :root {
+            --main-color: #ff3b30;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -28,9 +32,7 @@
             color: inherit;
         }
 
-        /* =========================
-           HEADER
-        ========================= */
+        /* HEADER */
 
         header {
             position: fixed;
@@ -56,7 +58,7 @@
         }
 
         .logo span {
-            color: #ff3b30;
+            color: var(--main-color);
         }
 
         nav {
@@ -73,22 +75,16 @@
         }
 
         nav a:hover {
-            color: #ff3b30;
+            color: var(--main-color);
         }
 
         .header-button {
-            background: #ff3b30;
+            background: var(--main-color);
             padding: 10px 18px;
             border-radius: 6px;
             color: white !important;
             font-weight: bold;
         }
-
-        .header-button:hover {
-            background: #e52d24;
-        }
-
-        /* MOBILE MENU */
 
         .menu-button {
             display: none;
@@ -97,13 +93,10 @@
             color: white;
         }
 
-        /* =========================
-           HERO
-        ========================= */
+        /* HERO */
 
         .hero {
             min-height: 100vh;
-
             display: flex;
             align-items: center;
 
@@ -124,7 +117,7 @@
         }
 
         .tag {
-            color: #ff3b30;
+            color: var(--main-color);
             font-weight: bold;
             letter-spacing: 4px;
             margin-bottom: 18px;
@@ -138,7 +131,7 @@
         }
 
         h1 span {
-            color: #ff3b30;
+            color: var(--main-color);
         }
 
         .hero p {
@@ -157,7 +150,7 @@
         .button {
             display: inline-block;
             padding: 15px 25px;
-            background: #ff3b30;
+            background: var(--main-color);
             color: white;
             text-decoration: none;
             border-radius: 6px;
@@ -166,7 +159,7 @@
         }
 
         .button:hover {
-            background: #e52d24;
+            opacity: 0.85;
             transform: translateY(-2px);
         }
 
@@ -181,9 +174,7 @@
             border-color: white;
         }
 
-        /* =========================
-           GENERAL
-        ========================= */
+        /* GENERAL */
 
         section {
             padding: 100px 7%;
@@ -195,7 +186,7 @@
         }
 
         .section-title small {
-            color: #ff3b30;
+            color: var(--main-color);
             font-weight: bold;
             letter-spacing: 2px;
         }
@@ -211,9 +202,7 @@
             color: #999;
         }
 
-        /* =========================
-           SERVICES
-        ========================= */
+        /* SERVICES */
 
         .services {
             background: #111419;
@@ -239,7 +228,7 @@
 
         .card:hover {
             transform: translateY(-8px);
-            border-color: #ff3b30;
+            border-color: var(--main-color);
             box-shadow: 0 15px 40px rgba(0,0,0,0.3);
         }
 
@@ -258,9 +247,7 @@
             font-size: 15px;
         }
 
-        /* =========================
-           ABOUT
-        ========================= */
+        /* ABOUT */
 
         .about {
             max-width: 1200px;
@@ -308,14 +295,12 @@
 
         .checks li::before {
             content: "✓";
-            color: #ff3b30;
+            color: var(--main-color);
             font-weight: bold;
             margin-right: 10px;
         }
 
-        /* =========================
-           PRICES
-        ========================= */
+        /* PRICES */
 
         .prices {
             background: #111419;
@@ -351,13 +336,11 @@
         }
 
         .price strong {
-            color: #ff3b30;
+            color: var(--main-color);
             font-size: 18px;
         }
 
-        /* =========================
-           REVIEWS
-        ========================= */
+        /* REVIEWS */
 
         .reviews {
             background: #0b0d10;
@@ -380,7 +363,7 @@
         }
 
         .stars {
-            color: #ff3b30;
+            color: var(--main-color);
             font-size: 20px;
             margin-bottom: 15px;
         }
@@ -390,13 +373,7 @@
             margin-bottom: 20px;
         }
 
-        .review strong {
-            color: white;
-        }
-
-        /* =========================
-           APPOINTMENT
-        ========================= */
+        /* APPOINTMENT */
 
         .appointment {
             background: #111419;
@@ -454,7 +431,7 @@
         input:focus,
         select:focus,
         textarea:focus {
-            border-color: #ff3b30;
+            border-color: var(--main-color);
         }
 
         textarea {
@@ -470,9 +447,7 @@
             font-size: 16px;
         }
 
-        /* =========================
-           CONTACT
-        ========================= */
+        /* CONTACT */
 
         .contact {
             text-align: center;
@@ -505,9 +480,7 @@
             text-decoration: none;
         }
 
-        /* =========================
-           FOOTER
-        ========================= */
+        /* FOOTER */
 
         footer {
             padding: 35px 7%;
@@ -520,9 +493,7 @@
             color: #aaa;
         }
 
-        /* =========================
-           MOBILE
-        ========================= */
+        /* MOBILE */
 
         @media (max-width: 900px) {
 
@@ -604,26 +575,26 @@
 
 <body>
 
-<!-- ==========================================
-     HEADER
-========================================== -->
-
 <header>
 
     <div class="logo">
-        APEX<span>AUTO</span>
+        <span id="logo-name">APEX</span><span>AUTO</span>
     </div>
 
     <nav>
+
         <a href="#services">Услуги</a>
         <a href="#about">За нас</a>
         <a href="#prices">Цени</a>
         <a href="#reviews">Отзиви</a>
         <a href="#appointment">Запази час</a>
 
-        <a href="tel:0888123456" class="header-button">
+        <a id="header-phone"
+           href="tel:0888123456"
+           class="header-button">
             0888 123 456
         </a>
+
     </nav>
 
     <div class="menu-button">
@@ -633,16 +604,12 @@
 </header>
 
 
-<!-- ==========================================
-     HERO
-========================================== -->
-
 <section class="hero">
 
     <div class="hero-content">
 
         <div class="tag">
-            Автосервиз • Стара Загора
+            Автосервиз • <span id="hero-city">Стара Загора</span>
         </div>
 
         <h1>
@@ -661,7 +628,9 @@
                 Запази час →
             </a>
 
-            <a href="tel:0888123456" class="button button-dark">
+            <a id="hero-phone"
+               href="tel:0888123456"
+               class="button button-dark">
                 📞 0888 123 456
             </a>
 
@@ -671,10 +640,6 @@
 
 </section>
 
-
-<!-- ==========================================
-     SERVICES
-========================================== -->
 
 <section class="services" id="services">
 
@@ -691,100 +656,66 @@
 
     </div>
 
-
     <div class="cards">
 
         <div class="card">
-
             <div class="icon">🔧</div>
-
             <h3>Автомобилна диагностика</h3>
-
             <p>
                 Компютърна диагностика и откриване
                 на проблеми по автомобила.
             </p>
-
         </div>
 
-
         <div class="card">
-
             <div class="icon">🛢️</div>
-
             <h3>Масла и филтри</h3>
-
             <p>
                 Смяна на двигателно масло,
                 маслени, въздушни и горивни филтри.
             </p>
-
         </div>
 
-
         <div class="card">
-
             <div class="icon">🚗</div>
-
             <h3>Гуми и баланс</h3>
-
             <p>
                 Смяна на гуми, баланс и проверка
                 на състоянието на колелата.
             </p>
-
         </div>
 
-
         <div class="card">
-
             <div class="icon">⚙️</div>
-
             <h3>Ходова част</h3>
-
             <p>
                 Проверка и ремонт на окачване,
                 амортисьори и кормилна система.
             </p>
-
         </div>
 
-
         <div class="card">
-
             <div class="icon">🛑</div>
-
             <h3>Спирачна система</h3>
-
             <p>
                 Смяна на накладки, дискове и
                 обслужване на спирачната система.
             </p>
-
         </div>
 
-
         <div class="card">
-
             <div class="icon">❄️</div>
-
             <h3>Автоклиматик</h3>
-
             <p>
                 Проверка, диагностика и обслужване
                 на климатичната система.
             </p>
-
         </div>
 
     </div>
 
 </section>
 
-
-<!-- ==========================================
-     ABOUT
-========================================== -->
 
 <section id="about">
 
@@ -803,27 +734,22 @@
             </h2>
 
             <p>
-                В APEX AUTO вярваме, че добрият автосервиз
-                означава качествена работа, честно отношение
-                и ясни цени.
+                В <span id="about-business">APEX AUTO</span> вярваме,
+                че добрият автосервиз означава качествена работа,
+                честно отношение и ясни цени.
             </p>
 
             <p>
                 Работим с внимание към всеки автомобил
-                и използваме съвременна диагностична
-                техника.
+                и използваме съвременна диагностична техника.
             </p>
 
             <ul class="checks">
 
                 <li>Професионална диагностика</li>
-
                 <li>Опитни специалисти</li>
-
                 <li>Качествени консумативи</li>
-
                 <li>Прозрачни цени</li>
-
                 <li>Коректно отношение</li>
 
             </ul>
@@ -834,10 +760,6 @@
 
 </section>
 
-
-<!-- ==========================================
-     PRICES
-========================================== -->
 
 <section class="prices" id="prices">
 
@@ -853,7 +775,6 @@
         </p>
 
     </div>
-
 
     <div class="price-list">
 
@@ -892,10 +813,6 @@
 </section>
 
 
-<!-- ==========================================
-     REVIEWS
-========================================== -->
-
 <section class="reviews" id="reviews">
 
     <div class="section-title">
@@ -906,14 +823,11 @@
 
     </div>
 
-
     <div class="review-grid">
 
         <div class="review">
 
-            <div class="stars">
-                ★★★★★
-            </div>
+            <div class="stars">★★★★★</div>
 
             <p>
                 „Много коректни и бързи. Обясниха ми
@@ -924,12 +838,9 @@
 
         </div>
 
-
         <div class="review">
 
-            <div class="stars">
-                ★★★★★
-            </div>
+            <div class="stars">★★★★★</div>
 
             <p>
                 „Оставих колата сутринта и следобед
@@ -940,12 +851,9 @@
 
         </div>
 
-
         <div class="review">
 
-            <div class="stars">
-                ★★★★★
-            </div>
+            <div class="stars">★★★★★</div>
 
             <p>
                 „Добри цени и професионално отношение.
@@ -960,10 +868,6 @@
 
 </section>
 
-
-<!-- ==========================================
-     APPOINTMENT
-========================================== -->
 
 <section class="appointment" id="appointment">
 
@@ -980,109 +884,68 @@
 
     </div>
 
-
     <div class="appointment-box">
 
-        <form action="mailto:example@email.com"
-              method="post"
-              enctype="text/plain">
+        <form id="appointment-form">
 
             <div class="form-grid">
 
                 <div class="form-group">
 
-                    <label for="name">
-                        Име
-                    </label>
+                    <label for="name">Име</label>
 
                     <input
                         type="text"
                         id="name"
-                        name="Име"
                         placeholder="Твоето име"
                         required
                     >
 
                 </div>
 
-
                 <div class="form-group">
 
-                    <label for="phone">
-                        Телефон
-                    </label>
+                    <label for="phone">Телефон</label>
 
                     <input
                         type="tel"
                         id="phone"
-                        name="Телефон"
                         placeholder="0888 123 456"
                         required
                     >
 
                 </div>
 
-
                 <div class="form-group">
 
-                    <label for="car">
-                        Автомобил
-                    </label>
+                    <label for="car">Автомобил</label>
 
                     <input
                         type="text"
                         id="car"
-                        name="Автомобил"
                         placeholder="Напр. BMW 320d"
                     >
 
                 </div>
 
-
                 <div class="form-group">
 
-                    <label for="service">
-                        Услуга
-                    </label>
+                    <label for="service">Услуга</label>
 
-                    <select id="service" name="Услуга">
+                    <select id="service">
 
-                        <option>
-                            Избери услуга
-                        </option>
-
-                        <option>
-                            Диагностика
-                        </option>
-
-                        <option>
-                            Смяна на масло
-                        </option>
-
-                        <option>
-                            Гуми и баланс
-                        </option>
-
-                        <option>
-                            Ходова част
-                        </option>
-
-                        <option>
-                            Спирачна система
-                        </option>
-
-                        <option>
-                            Автоклиматик
-                        </option>
-
-                        <option>
-                            Друго
-                        </option>
+                        <option>Избери услуга</option>
+                        <option>Диагностика</option>
+                        <option>Смяна на масло</option>
+                        <option>Гуми и баланс</option>
+                        <option>Ходова част</option>
+                        <option>Спирачна система</option>
+                        <option>Автоклиматик</option>
+                        <option>Друго</option>
 
                     </select>
 
                 </div>
-
 
                 <div class="form-group full">
 
@@ -1092,19 +955,16 @@
 
                     <textarea
                         id="message"
-                        name="Съобщение"
-                        placeholder="Опиши проблема или какво искаш да бъде извършено..."
+                        placeholder="Опиши проблема..."
                     ></textarea>
 
                 </div>
 
             </div>
 
-
             <button
                 type="submit"
-                class="button form-button"
-            >
+                class="button form-button">
                 Изпрати запитване →
             </button>
 
@@ -1114,10 +974,6 @@
 
 </section>
 
-
-<!-- ==========================================
-     CONTACT
-========================================== -->
 
 <section class="contact" id="contact">
 
@@ -1130,51 +986,110 @@
     </p>
 
     <a
+        id="contact-phone"
         href="tel:0888123456"
-        class="contact-phone"
-    >
+        class="contact-phone">
         📞 0888 123 456
     </a>
 
     <br>
 
-    <a
-        href="#appointment"
-        class="button"
-    >
+    <a href="#appointment" class="button">
         Запази час →
     </a>
 
 </section>
 
 
-<!-- ==========================================
-     FOOTER
-========================================== -->
-
 <footer>
 
     © 2026
-    <strong>APEX AUTO</strong>
-    • Стара Загора
+    <strong id="footer-business">APEX AUTO</strong>
+    • <span id="footer-city">Стара Загора</span>
 
     <br><br>
 
-    Автосервиз • Диагностика • Ремонт • Поддръжка
+    <span id="footer-hours">
+        Понеделник – Петък: 08:00 – 18:00
+    </span>
 
 </footer>
 
 
-<!-- ==========================================
-     MOBILE MENU SCRIPT
-========================================== -->
+<!-- ПЪРВО ЗАРЕЖДАМЕ CONFIG.JS -->
+<script src="config.js"></script>
 
+
+<!-- ПОСЛЕ ПРИЛАГАМЕ ДАННИТЕ -->
 <script>
 
-    const menuButton = document.querySelector(".menu-button");
-    const nav = document.querySelector("nav");
+    // Цвят
+    document.documentElement.style.setProperty(
+        "--main-color",
+        BUSINESS.color
+    );
 
-    menuButton.addEventListener("click", function () {
+
+    // Заглавие на браузъра
+    document.getElementById("page-title").textContent =
+        BUSINESS.name + " | Автосервиз " + BUSINESS.city;
+
+
+    // Име
+    document.getElementById("about-business").textContent =
+        BUSINESS.name;
+
+    document.getElementById("footer-business").textContent =
+        BUSINESS.name;
+
+
+    // Град
+    document.getElementById("hero-city").textContent =
+        BUSINESS.city;
+
+    document.getElementById("footer-city").textContent =
+        BUSINESS.city;
+
+
+    // Телефон
+    document.getElementById("header-phone").textContent =
+        BUSINESS.phone;
+
+    document.getElementById("hero-phone").innerHTML =
+        "📞 " + BUSINESS.phone;
+
+    document.getElementById("contact-phone").textContent =
+        "📞 " + BUSINESS.phone;
+
+
+    // Телефонни линкове
+    const cleanPhone =
+        BUSINESS.phone.replace(/[^0-9+]/g, "");
+
+    document.getElementById("header-phone").href =
+        "tel:" + cleanPhone;
+
+    document.getElementById("hero-phone").href =
+        "tel:" + cleanPhone;
+
+    document.getElementById("contact-phone").href =
+        "tel:" + cleanPhone;
+
+
+    // Работно време
+    document.getElementById("footer-hours").textContent =
+        BUSINESS.workingHours;
+
+
+    // Mobile menu
+    const menuButton =
+        document.querySelector(".menu-button");
+
+    const nav =
+        document.querySelector("nav");
+
+
+    menuButton.addEventListener("click", function() {
 
         if (nav.style.display === "flex") {
 
@@ -1183,16 +1098,12 @@
         } else {
 
             nav.style.display = "flex";
-
             nav.style.position = "absolute";
             nav.style.top = "70px";
             nav.style.left = "0";
             nav.style.width = "100%";
-
             nav.style.background = "#0b0d10";
-
             nav.style.padding = "25px";
-
             nav.style.flexDirection = "column";
             nav.style.gap = "20px";
 
@@ -1201,21 +1112,68 @@
     });
 
 
-    const navLinks = document.querySelectorAll("nav a");
-
-    navLinks.forEach(function(link) {
+    // Затваряне на менюто след натискане
+    document.querySelectorAll("nav a").forEach(function(link) {
 
         link.addEventListener("click", function() {
 
             if (window.innerWidth <= 900) {
-
                 nav.style.display = "none";
-
             }
 
         });
 
     });
+
+
+    // Форма за запазване на час
+    document
+        .getElementById("appointment-form")
+        .addEventListener("submit", function(event) {
+
+            event.preventDefault();
+
+            const name =
+                document.getElementById("name").value;
+
+            const phone =
+                document.getElementById("phone").value;
+
+            const car =
+                document.getElementById("car").value;
+
+            const service =
+                document.getElementById("service").value;
+
+            const message =
+                document.getElementById("message").value;
+
+
+            const subject =
+                encodeURIComponent(
+                    "Ново запитване - " + BUSINESS.name
+                );
+
+
+            const body =
+                encodeURIComponent(
+                    "Име: " + name +
+                    "\nТелефон: " + phone +
+                    "\nАвтомобил: " + car +
+                    "\nУслуга: " + service +
+                    "\n\nСъобщение:\n" + message
+                );
+
+
+            window.location.href =
+                "mailto:" +
+                BUSINESS.email +
+                "?subject=" +
+                subject +
+                "&body=" +
+                body;
+
+        });
 
 </script>
 
