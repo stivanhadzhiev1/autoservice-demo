@@ -18,4 +18,5 @@ const BUSINESS = {
 
     // Основен цвят на сайта
     color: "#ff3b30"
+
 };
