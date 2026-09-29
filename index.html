@@ -1,584 +1,524 @@
 <!DOCTYPE html>
 <html lang="bg">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title id="page-title">APEX AUTO | Автосервиз</title>
-
-    <style>
-        :root {
-            --main-color: #ff3b30;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: Arial, sans-serif;
-            background: #0b0d10;
-            color: white;
-            line-height: 1.6;
-        }
-
-        a {
-            color: inherit;
-        }
-
-        /* HEADER */
-
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            padding: 18px 7%;
-            background: rgba(8, 9, 11, 0.92);
-            backdrop-filter: blur(12px);
-            z-index: 1000;
-
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-        }
-
-        .logo {
-            font-size: 25px;
-            font-weight: 900;
-            letter-spacing: 1px;
-        }
-
-        .logo span {
-            color: var(--main-color);
-        }
-
-        nav {
-            display: flex;
-            align-items: center;
-            gap: 28px;
-        }
-
-        nav a {
-            color: #ddd;
-            text-decoration: none;
-            font-size: 15px;
-            transition: 0.3s;
-        }
-
-        nav a:hover {
-            color: var(--main-color);
-        }
-
-        .header-button {
-            background: var(--main-color);
-            padding: 10px 18px;
-            border-radius: 6px;
-            color: white !important;
-            font-weight: bold;
-        }
-
-        .menu-button {
-            display: none;
-            font-size: 28px;
-            cursor: pointer;
-            color: white;
-        }
-
-        /* HERO */
-
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-
-            padding: 130px 7% 70px;
-
-            background:
-                linear-gradient(
-                    90deg,
-                    rgba(0,0,0,0.92),
-                    rgba(0,0,0,0.45)
-                ),
-                url("https://images.unsplash.com/photo-1487754180451-c456f719a1fc?auto=format&fit=crop&w=2000&q=80")
-                center/cover;
-        }
-
-        .hero-content {
-            max-width: 750px;
-        }
-
-        .tag {
-            color: var(--main-color);
-            font-weight: bold;
-            letter-spacing: 4px;
-            margin-bottom: 18px;
-            text-transform: uppercase;
-        }
-
-        h1 {
-            font-size: clamp(48px, 7vw, 82px);
-            line-height: 0.98;
-            margin-bottom: 25px;
-        }
-
-        h1 span {
-            color: var(--main-color);
-        }
-
-        .hero p {
-            color: #ccc;
-            font-size: 19px;
-            max-width: 650px;
-            margin-bottom: 32px;
-        }
-
-        .buttons {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-        }
-
-        .button {
-            display: inline-block;
-            padding: 15px 25px;
-            background: var(--main-color);
-            color: white;
-            text-decoration: none;
-            border-radius: 6px;
-            font-weight: bold;
-            transition: 0.3s;
-        }
-
-        .button:hover {
-            opacity: 0.85;
-            transform: translateY(-2px);
-        }
-
-        .button-dark {
-            background: transparent;
-            border: 1px solid #777;
-        }
-
-        .button-dark:hover {
-            background: white;
-            color: black;
-            border-color: white;
-        }
-
-        /* GENERAL */
-
-        section {
-            padding: 100px 7%;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 55px;
-        }
-
-        .section-title small {
-            color: var(--main-color);
-            font-weight: bold;
-            letter-spacing: 2px;
-        }
-
-        .section-title h2 {
-            font-size: 45px;
-            margin-top: 8px;
-        }
-
-        .section-title p {
-            max-width: 650px;
-            margin: 15px auto 0;
-            color: #999;
-        }
-
-        /* SERVICES */
-
-        .services {
-            background: #111419;
-        }
-
-        .cards {
-            max-width: 1200px;
-            margin: auto;
-
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-        }
-
-        .card {
-            background: #191d22;
-            padding: 32px;
-            border-radius: 12px;
-            border: 1px solid #292d33;
-
-            transition: 0.3s;
-        }
-
-        .card:hover {
-            transform: translateY(-8px);
-            border-color: var(--main-color);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
-        }
-
-        .icon {
-            font-size: 38px;
-            margin-bottom: 20px;
-        }
-
-        .card h3 {
-            margin-bottom: 12px;
-            font-size: 21px;
-        }
-
-        .card p {
-            color: #999;
-            font-size: 15px;
-        }
-
-        /* ABOUT */
-
-        .about {
-            max-width: 1200px;
-            margin: auto;
-
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
-        }
-
-        .about-image {
-            min-height: 450px;
-            border-radius: 15px;
-
-            background:
-                linear-gradient(
-                    rgba(0,0,0,0.15),
-                    rgba(0,0,0,0.15)
-                ),
-                url("https://images.unsplash.com/photo-1503736334956-4c8f8e92946d?auto=format&fit=crop&w=1200&q=80")
-                center/cover;
-        }
-
-        .about-text h2 {
-            font-size: 45px;
-            line-height: 1.1;
-            margin-bottom: 20px;
-        }
-
-        .about-text p {
-            color: #aaa;
-            margin-bottom: 20px;
-        }
-
-        .checks {
-            list-style: none;
-            margin-top: 25px;
-        }
-
-        .checks li {
-            margin: 13px 0;
-            color: #ddd;
-        }
-
-        .checks li::before {
-            content: "✓";
-            color: var(--main-color);
-            font-weight: bold;
-            margin-right: 10px;
-        }
-
-        /* PRICES */
-
-        .prices {
-            background: #111419;
-        }
-
-        .price-list {
-            max-width: 800px;
-            margin: auto;
-
-            background: #191d22;
-            border-radius: 12px;
-            overflow: hidden;
-
-            border: 1px solid #292d33;
-        }
-
-        .price {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-
-            padding: 22px 30px;
-
-            border-bottom: 1px solid #292d33;
-        }
-
-        .price:last-child {
-            border: none;
-        }
-
-        .price span {
-            color: #ddd;
-        }
-
-        .price strong {
-            color: var(--main-color);
-            font-size: 18px;
-        }
-
-        /* REVIEWS */
-
-        .reviews {
-            background: #0b0d10;
-        }
-
-        .review-grid {
-            max-width: 1100px;
-            margin: auto;
-
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-        }
-
-        .review {
-            background: #15191e;
-            padding: 30px;
-            border-radius: 12px;
-            border: 1px solid #292d33;
-        }
-
-        .stars {
-            color: var(--main-color);
-            font-size: 20px;
-            margin-bottom: 15px;
-        }
-
-        .review p {
-            color: #bbb;
-            margin-bottom: 20px;
-        }
-
-        /* APPOINTMENT */
-
-        .appointment {
-            background: #111419;
-        }
-
-        .appointment-box {
-            max-width: 900px;
-            margin: auto;
-
-            background: #191d22;
-            padding: 40px;
-
-            border-radius: 15px;
-            border: 1px solid #292d33;
-        }
-
-        .form-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 18px;
-        }
-
-        .form-group {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-
-        .form-group.full {
-            grid-column: 1 / -1;
-        }
-
-        label {
-            color: #ccc;
-            font-size: 14px;
-        }
-
-        input,
-        select,
-        textarea {
-            width: 100%;
-
-            padding: 14px 15px;
-
-            background: #0d0f12;
-            color: white;
-
-            border: 1px solid #30343a;
-            border-radius: 6px;
-
-            outline: none;
-            font-family: inherit;
-        }
-
-        input:focus,
-        select:focus,
-        textarea:focus {
-            border-color: var(--main-color);
-        }
-
-        textarea {
-            min-height: 120px;
-            resize: vertical;
-        }
-
-        .form-button {
-            margin-top: 20px;
-            width: 100%;
-            border: none;
-            cursor: pointer;
-            font-size: 16px;
-        }
-
-        /* CONTACT */
-
-        .contact {
-            text-align: center;
-
-            background:
-                linear-gradient(
-                    rgba(180,20,15,0.9),
-                    rgba(100,10,5,0.9)
-                ),
-                url("https://images.unsplash.com/photo-1487754180451-c456f719a1fc?auto=format&fit=crop&w=1800&q=80")
-                center/cover;
-        }
-
-        .contact h2 {
-            font-size: 50px;
-            line-height: 1.1;
-            margin-bottom: 20px;
-        }
-
-        .contact p {
-            margin-bottom: 30px;
-            color: #eee;
-        }
-
-        .contact-phone {
-            display: inline-block;
-            font-size: 28px;
-            font-weight: bold;
-            margin-bottom: 25px;
-            text-decoration: none;
-        }
-
-        /* FOOTER */
-
-        footer {
-            padding: 35px 7%;
-            text-align: center;
-            background: #070809;
-            color: #777;
-        }
-
-        footer strong {
-            color: #aaa;
-        }
-
-        /* MOBILE */
-
-        @media (max-width: 900px) {
-
-            nav {
-                display: none;
-            }
-
-            .menu-button {
-                display: block;
-            }
-
-            .cards {
-                grid-template-columns: 1fr 1fr;
-            }
-
-            .review-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-
-            .about {
-                grid-template-columns: 1fr;
-            }
-
-            .about-image {
-                min-height: 350px;
-            }
-        }
-
-        @media (max-width: 650px) {
-
-            header {
-                padding: 17px 5%;
-            }
-
-            .hero {
-                padding-left: 5%;
-                padding-right: 5%;
-            }
-
-            section {
-                padding: 75px 5%;
-            }
-
-            .cards {
-                grid-template-columns: 1fr;
-            }
-
-            .review-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .form-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .form-group.full {
-                grid-column: auto;
-            }
-
-            .appointment-box {
-                padding: 25px;
-            }
-
-            .section-title h2,
-            .about-text h2 {
-                font-size: 35px;
-            }
-
-            .contact h2 {
-                font-size: 38px;
-            }
-
-            .price {
-                padding: 18px;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title id="page-title">APEX AUTO | Автосервиз</title>
+
+<style>
+
+:root {
+    --main-color: #ff3b30;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #0b0b0b;
+    color: white;
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 75px;
+    background: rgba(10,10,10,0.95);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 6%;
+    z-index: 1000;
+    border-bottom: 1px solid #222;
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: 900;
+    letter-spacing: 2px;
+}
+
+.logo span:last-child {
+    color: var(--main-color);
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+}
+
+nav a {
+    font-size: 14px;
+    color: #ddd;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    color: var(--main-color);
+}
+
+.header-button {
+    background: var(--main-color);
+    padding: 10px 18px;
+    border-radius: 6px;
+    color: white !important;
+    font-weight: bold;
+}
+
+.menu-button {
+    display: none;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 100px 8%;
+    background:
+        linear-gradient(90deg, rgba(0,0,0,0.95), rgba(0,0,0,0.55)),
+        radial-gradient(circle at 80% 40%, rgba(255,59,48,0.15), transparent 40%);
+}
+
+.hero-content {
+    max-width: 750px;
+}
+
+.tag {
+    color: var(--main-color);
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.hero h1 {
+    font-size: clamp(45px, 7vw, 85px);
+    line-height: 1;
+    margin: 20px 0;
+    font-weight: 900;
+}
+
+.hero h1 span {
+    color: var(--main-color);
+}
+
+.hero p {
+    max-width: 600px;
+    color: #bbb;
+    font-size: 18px;
+    margin-bottom: 35px;
+}
+
+.buttons {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.button {
+    display: inline-block;
+    background: var(--main-color);
+    padding: 15px 25px;
+    border-radius: 6px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.button:hover {
+    transform: translateY(-3px);
+    opacity: 0.9;
+}
+
+.button-dark {
+    background: #1b1b1b;
+    border: 1px solid #333;
+}
+
+/* =========================
+   SECTIONS
+========================= */
+
+section {
+    padding: 100px 8%;
+}
+
+.section-title {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 55px;
+}
+
+.section-title small {
+    color: var(--main-color);
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.section-title h2 {
+    font-size: 42px;
+    margin: 10px 0;
+}
+
+.section-title p {
+    color: #999;
+}
+
+/* =========================
+   SERVICES
+========================= */
+
+.services {
+    background: #111;
+}
+
+.cards {
+    max-width: 1200px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.card {
+    background: #181818;
+    padding: 35px;
+    border: 1px solid #252525;
+    border-radius: 10px;
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-7px);
+    border-color: var(--main-color);
+}
+
+.icon {
+    font-size: 38px;
+    margin-bottom: 20px;
+}
+
+.card h3 {
+    margin-bottom: 10px;
+    font-size: 21px;
+}
+
+.card p {
+    color: #999;
+    font-size: 15px;
+}
+
+/* =========================
+   ABOUT
+========================= */
+
+.about {
+    max-width: 1200px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.about-image {
+    height: 450px;
+    border-radius: 12px;
+    background:
+        linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.7)),
+        url("https://images.unsplash.com/photo-1486006920555-c77dcf18193c?auto=format&fit=crop&w=1000&q=80")
+        center/cover;
+}
+
+.about-text h2 {
+    font-size: 42px;
+    line-height: 1.1;
+    margin: 15px 0 20px;
+}
+
+.about-text p {
+    color: #aaa;
+    margin-bottom: 15px;
+}
+
+.checks {
+    list-style: none;
+    margin-top: 25px;
+}
+
+.checks li {
+    margin-bottom: 12px;
+}
+
+.checks li::before {
+    content: "✓";
+    color: var(--main-color);
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+/* =========================
+   PRICES
+========================= */
+
+.prices {
+    background: #111;
+}
+
+.price-list {
+    max-width: 800px;
+    margin: auto;
+}
+
+.price {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 22px 25px;
+    border-bottom: 1px solid #292929;
+    background: #181818;
+}
+
+.price:first-child {
+    border-radius: 8px 8px 0 0;
+}
+
+.price:last-child {
+    border-radius: 0 0 8px 8px;
+}
+
+.price span {
+    color: #ddd;
+}
+
+.price strong {
+    color: var(--main-color);
+    font-size: 18px;
+}
+
+/* =========================
+   REVIEWS
+========================= */
+
+.reviews {
+    background: #0b0b0b;
+}
+
+.review-grid {
+    max-width: 1100px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.review {
+    background: #151515;
+    padding: 30px;
+    border-radius: 10px;
+    border: 1px solid #242424;
+}
+
+.stars {
+    color: #ffc107;
+    margin-bottom: 15px;
+}
+
+.review p {
+    color: #aaa;
+    margin-bottom: 20px;
+}
+
+.review strong {
+    color: white;
+}
+
+/* =========================
+   APPOINTMENT
+========================= */
+
+.appointment {
+    background: #111;
+}
+
+.form {
+    max-width: 800px;
+    margin: auto;
+    background: #181818;
+    padding: 40px;
+    border-radius: 12px;
+    border: 1px solid #292929;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+}
+
+.form input,
+.form select,
+.form textarea {
+    width: 100%;
+    background: #0d0d0d;
+    border: 1px solid #333;
+    color: white;
+    padding: 14px;
+    border-radius: 6px;
+    font-size: 15px;
+}
+
+.form textarea {
+    min-height: 130px;
+    resize: vertical;
+    margin-top: 18px;
+}
+
+.form button {
+    border: none;
+    cursor: pointer;
+    margin-top: 18px;
+    width: 100%;
+}
+
+/* =========================
+   CONTACT
+========================= */
+
+.contact {
+    text-align: center;
+    background:
+        linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.9)),
+        radial-gradient(circle at center, rgba(255,59,48,0.18), transparent 60%);
+}
+
+.contact h2 {
+    font-size: 45px;
+    margin-bottom: 15px;
+}
+
+.contact p {
+    color: #aaa;
+    margin-bottom: 25px;
+}
+
+.contact-phone {
+    display: inline-block;
+    font-size: 28px;
+    font-weight: bold;
+    color: var(--main-color);
+    margin-bottom: 25px;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    text-align: center;
+    padding: 30px;
+    background: #050505;
+    color: #777;
+    font-size: 14px;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 850px) {
+
+    nav {
+        display: none;
+        position: absolute;
+        top: 75px;
+        left: 0;
+        width: 100%;
+        background: #111;
+        flex-direction: column;
+        padding: 25px;
+        gap: 20px;
+        border-bottom: 1px solid #333;
+    }
+
+    nav.active {
+        display: flex;
+    }
+
+    .menu-button {
+        display: block;
+    }
+
+    .cards {
+        grid-template-columns: 1fr;
+    }
+
+    .about {
+        grid-template-columns: 1fr;
+    }
+
+    .review-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero h1 {
+        font-size: 48px;
+    }
+
+    .section-title h2 {
+        font-size: 34px;
+    }
+
+    .contact h2 {
+        font-size: 34px;
+    }
+}
+
+</style>
 </head>
 
 <body>
 
+<!-- =========================
+     HEADER
+========================= -->
+
 <header>
 
     <div class="logo">
-        <span id="logo-name">APEX</span><span>AUTO</span>
+        <span id="logo-name">APEX</span>
+        <span>AUTO</span>
     </div>
 
     <nav>
@@ -597,19 +537,22 @@
 
     </nav>
 
-    <div class="menu-button">
-        ☰
-    </div>
+    <div class="menu-button">☰</div>
 
 </header>
 
+
+<!-- =========================
+     HERO
+========================= -->
 
 <section class="hero">
 
     <div class="hero-content">
 
         <div class="tag">
-            Автосервиз • <span id="hero-city">Стара Загора</span>
+            Автосервиз •
+            <span id="hero-city">Стара Загора</span>
         </div>
 
         <h1>
@@ -641,6 +584,10 @@
 </section>
 
 
+<!-- =========================
+     SERVICES
+========================= -->
+
 <section class="services" id="services">
 
     <div class="section-title">
@@ -656,66 +603,14 @@
 
     </div>
 
-    <div class="cards">
-
-        <div class="card">
-            <div class="icon">🔧</div>
-            <h3>Автомобилна диагностика</h3>
-            <p>
-                Компютърна диагностика и откриване
-                на проблеми по автомобила.
-            </p>
-        </div>
-
-        <div class="card">
-            <div class="icon">🛢️</div>
-            <h3>Масла и филтри</h3>
-            <p>
-                Смяна на двигателно масло,
-                маслени, въздушни и горивни филтри.
-            </p>
-        </div>
-
-        <div class="card">
-            <div class="icon">🚗</div>
-            <h3>Гуми и баланс</h3>
-            <p>
-                Смяна на гуми, баланс и проверка
-                на състоянието на колелата.
-            </p>
-        </div>
-
-        <div class="card">
-            <div class="icon">⚙️</div>
-            <h3>Ходова част</h3>
-            <p>
-                Проверка и ремонт на окачване,
-                амортисьори и кормилна система.
-            </p>
-        </div>
-
-        <div class="card">
-            <div class="icon">🛑</div>
-            <h3>Спирачна система</h3>
-            <p>
-                Смяна на накладки, дискове и
-                обслужване на спирачната система.
-            </p>
-        </div>
-
-        <div class="card">
-            <div class="icon">❄️</div>
-            <h3>Автоклиматик</h3>
-            <p>
-                Проверка, диагностика и обслужване
-                на климатичната система.
-            </p>
-        </div>
-
-    </div>
+    <div class="cards" id="services-container"></div>
 
 </section>
 
+
+<!-- =========================
+     ABOUT
+========================= -->
 
 <section id="about">
 
@@ -734,23 +629,23 @@
             </h2>
 
             <p>
-                В <span id="about-business">APEX AUTO</span> вярваме,
-                че добрият автосервиз означава качествена работа,
-                честно отношение и ясни цени.
+                В <span id="about-business">APEX AUTO</span>
+                вярваме, че добрият автосервиз започва
+                с коректно отношение към клиента.
             </p>
 
             <p>
                 Работим с внимание към всеки автомобил
-                и използваме съвременна диагностична техника.
+                и се стремим да предлагаме качествено
+                обслужване на разумна цена.
             </p>
 
             <ul class="checks">
 
-                <li>Професионална диагностика</li>
-                <li>Опитни специалисти</li>
-                <li>Качествени консумативи</li>
-                <li>Прозрачни цени</li>
-                <li>Коректно отношение</li>
+                <li>Професионално отношение</li>
+                <li>Коректни цени</li>
+                <li>Качествени части и консумативи</li>
+                <li>Бързо обслужване</li>
 
             </ul>
 
@@ -760,6 +655,10 @@
 
 </section>
 
+
+<!-- =========================
+     PRICES
+========================= -->
 
 <section class="prices" id="prices">
 
@@ -776,48 +675,20 @@
 
     </div>
 
-    <div class="price-list">
-
-        <div class="price">
-            <span>Компютърна диагностика</span>
-            <strong>от 20 €</strong>
-        </div>
-
-        <div class="price">
-            <span>Смяна на масло</span>
-            <strong>от 15 €</strong>
-        </div>
-
-        <div class="price">
-            <span>Смяна на гуми</span>
-            <strong>от 25 €</strong>
-        </div>
-
-        <div class="price">
-            <span>Баланс на гуми</span>
-            <strong>от 15 €</strong>
-        </div>
-
-        <div class="price">
-            <span>Смяна на накладки</span>
-            <strong>от 30 €</strong>
-        </div>
-
-        <div class="price">
-            <span>Проверка на ходова част</span>
-            <strong>от 15 €</strong>
-        </div>
-
-    </div>
+    <div class="price-list" id="prices-container"></div>
 
 </section>
 
+
+<!-- =========================
+     REVIEWS
+========================= -->
 
 <section class="reviews" id="reviews">
 
     <div class="section-title">
 
-        <small>НАШИТЕ КЛИЕНТИ</small>
+        <small>ОТЗИВИ</small>
 
         <h2>Какво казват клиентите</h2>
 
@@ -827,40 +698,48 @@
 
         <div class="review">
 
-            <div class="stars">★★★★★</div>
+            <div class="stars">
+                ★★★★★
+            </div>
 
             <p>
-                „Много коректни и бързи. Обясниха ми
-                какъв е проблемът и го отстраниха.“
+                Много коректно отношение и бързо обслужване.
+                Препоръчвам!
             </p>
 
-            <strong>— Иван П.</strong>
+            <strong>Иван П.</strong>
 
         </div>
 
+
         <div class="review">
 
-            <div class="stars">★★★★★</div>
+            <div class="stars">
+                ★★★★★
+            </div>
 
             <p>
-                „Оставих колата сутринта и следобед
-                беше готова. Определено бих се върнал.“
+                Направиха диагностиката бързо и ми обясниха
+                точно какъв е проблемът.
             </p>
 
-            <strong>— Георги Д.</strong>
+            <strong>Георги Д.</strong>
 
         </div>
 
+
         <div class="review">
 
-            <div class="stars">★★★★★</div>
+            <div class="stars">
+                ★★★★★
+            </div>
 
             <p>
-                „Добри цени и професионално отношение.
-                Препоръчвам.“
+                Добри цени и професионално отношение.
+                Ще посетя сервиза отново.
             </p>
 
-            <strong>— Николай С.</strong>
+            <strong>Николай К.</strong>
 
         </div>
 
@@ -868,6 +747,10 @@
 
 </section>
 
+
+<!-- =========================
+     APPOINTMENT
+========================= -->
 
 <section class="appointment" id="appointment">
 
@@ -878,104 +761,69 @@
         <h2>Изпрати запитване</h2>
 
         <p>
-            Попълни формата и ще се свържем с теб
-            за потвърждение.
+            Попълни формата и ще се свържем с теб.
         </p>
 
     </div>
 
-    <div class="appointment-box">
 
-        <form id="appointment-form">
+    <form class="form" id="appointment-form">
 
-            <div class="form-grid">
+        <div class="form-grid">
 
-                <div class="form-group">
+            <input
+                type="text"
+                id="name"
+                placeholder="Име"
+                required
+            >
 
-                    <label for="name">Име</label>
+            <input
+                type="tel"
+                id="phone"
+                placeholder="Телефон"
+                required
+            >
 
-                    <input
-                        type="text"
-                        id="name"
-                        placeholder="Твоето име"
-                        required
-                    >
+            <input
+                type="text"
+                id="car"
+                placeholder="Автомобил"
+            >
 
-                </div>
+            <select id="service">
 
-                <div class="form-group">
+                <option value="">
+                    Избери услуга
+                </option>
 
-                    <label for="phone">Телефон</label>
+            </select>
 
-                    <input
-                        type="tel"
-                        id="phone"
-                        placeholder="0888 123 456"
-                        required
-                    >
+        </div>
 
-                </div>
 
-                <div class="form-group">
+        <textarea
+            id="message"
+            placeholder="Допълнително съобщение..."
+        ></textarea>
 
-                    <label for="car">Автомобил</label>
 
-                    <input
-                        type="text"
-                        id="car"
-                        placeholder="Напр. BMW 320d"
-                    >
+        <button
+            type="submit"
+            class="button">
+            Изпрати запитване →
+        </button>
 
-                </div>
-
-                <div class="form-group">
-
-                    <label for="service">Услуга</label>
-
-                    <select id="service">
-
-                        <option>Избери услуга</option>
-                        <option>Диагностика</option>
-                        <option>Смяна на масло</option>
-                        <option>Гуми и баланс</option>
-                        <option>Ходова част</option>
-                        <option>Спирачна система</option>
-                        <option>Автоклиматик</option>
-                        <option>Друго</option>
-
-                    </select>
-
-                </div>
-
-                <div class="form-group full">
-
-                    <label for="message">
-                        Допълнителна информация
-                    </label>
-
-                    <textarea
-                        id="message"
-                        placeholder="Опиши проблема..."
-                    ></textarea>
-
-                </div>
-
-            </div>
-
-            <button
-                type="submit"
-                class="button form-button">
-                Изпрати запитване →
-            </button>
-
-        </form>
-
-    </div>
+    </form>
 
 </section>
 
 
-<section class="contact" id="contact">
+<!-- =========================
+     CONTACT
+========================= -->
+
+<section class="contact">
 
     <h2>
         Готови сме да помогнем.
@@ -992,20 +840,34 @@
         📞 0888 123 456
     </a>
 
-    <br>
+    <br><br>
 
-    <a href="#appointment" class="button">
+    <a
+        href="#appointment"
+        class="button">
         Запази час →
     </a>
 
 </section>
 
 
+<!-- =========================
+     FOOTER
+========================= -->
+
 <footer>
 
     © 2026
-    <strong id="footer-business">APEX AUTO</strong>
-    • <span id="footer-city">Стара Загора</span>
+
+    <strong id="footer-business">
+        APEX AUTO
+    </strong>
+
+    •
+
+    <span id="footer-city">
+        Стара Загора
+    </span>
 
     <br><br>
 
@@ -1016,164 +878,246 @@
 </footer>
 
 
-<!-- ПЪРВО ЗАРЕЖДАМЕ CONFIG.JS -->
+<!-- =========================
+     CONFIG
+========================= -->
+
 <script src="config.js"></script>
 
 
-<!-- ПОСЛЕ ПРИЛАГАМЕ ДАННИТЕ -->
+<!-- =========================
+     JAVASCRIPT
+========================= -->
+
 <script>
 
-    // Цвят
-    document.documentElement.style.setProperty(
-        "--main-color",
-        BUSINESS.color
-    );
+/* =========================
+   BASIC BUSINESS INFO
+========================= */
+
+document.documentElement.style.setProperty(
+    "--main-color",
+    BUSINESS.color
+);
+
+document.getElementById("page-title").textContent =
+    BUSINESS.name + " | Автосервиз " + BUSINESS.city;
+
+document.getElementById("logo-name").textContent =
+    BUSINESS.name.split(" ")[0];
+
+document.getElementById("about-business").textContent =
+    BUSINESS.name;
+
+document.getElementById("footer-business").textContent =
+    BUSINESS.name;
+
+document.getElementById("hero-city").textContent =
+    BUSINESS.city;
+
+document.getElementById("footer-city").textContent =
+    BUSINESS.city;
+
+document.getElementById("footer-hours").textContent =
+    BUSINESS.workingHours;
 
 
-    // Заглавие на браузъра
-    document.getElementById("page-title").textContent =
-        BUSINESS.name + " | Автосервиз " + BUSINESS.city;
+/* =========================
+   PHONE
+========================= */
+
+const cleanPhone =
+    BUSINESS.phone.replace(/[^0-9+]/g, "");
+
+document.getElementById("header-phone").textContent =
+    BUSINESS.phone;
+
+document.getElementById("header-phone").href =
+    "tel:" + cleanPhone;
+
+document.getElementById("hero-phone").innerHTML =
+    "📞 " + BUSINESS.phone;
+
+document.getElementById("hero-phone").href =
+    "tel:" + cleanPhone;
+
+document.getElementById("contact-phone").textContent =
+    "📞 " + BUSINESS.phone;
+
+document.getElementById("contact-phone").href =
+    "tel:" + cleanPhone;
 
 
-    // Име
-    document.getElementById("about-business").textContent =
-        BUSINESS.name;
+/* =========================
+   SERVICES
+========================= */
 
-    document.getElementById("footer-business").textContent =
-        BUSINESS.name;
+const servicesContainer =
+    document.getElementById("services-container");
 
+servicesContainer.innerHTML = "";
 
-    // Град
-    document.getElementById("hero-city").textContent =
-        BUSINESS.city;
+BUSINESS.services.forEach(function(service) {
 
-    document.getElementById("footer-city").textContent =
-        BUSINESS.city;
+    servicesContainer.innerHTML += `
 
+        <div class="card">
 
-    // Телефон
-    document.getElementById("header-phone").textContent =
-        BUSINESS.phone;
+            <div class="icon">
+                ${service.icon}
+            </div>
 
-    document.getElementById("hero-phone").innerHTML =
-        "📞 " + BUSINESS.phone;
+            <h3>
+                ${service.title}
+            </h3>
 
-    document.getElementById("contact-phone").textContent =
-        "📞 " + BUSINESS.phone;
+            <p>
+                ${service.description}
+            </p>
 
+        </div>
 
-    // Телефонни линкове
-    const cleanPhone =
-        BUSINESS.phone.replace(/[^0-9+]/g, "");
+    `;
 
-    document.getElementById("header-phone").href =
-        "tel:" + cleanPhone;
-
-    document.getElementById("hero-phone").href =
-        "tel:" + cleanPhone;
-
-    document.getElementById("contact-phone").href =
-        "tel:" + cleanPhone;
+});
 
 
-    // Работно време
-    document.getElementById("footer-hours").textContent =
-        BUSINESS.workingHours;
+/* =========================
+   PRICE LIST
+========================= */
+
+const pricesContainer =
+    document.getElementById("prices-container");
+
+pricesContainer.innerHTML = "";
+
+BUSINESS.prices.forEach(function(item) {
+
+    pricesContainer.innerHTML += `
+
+        <div class="price">
+
+            <span>
+                ${item.service}
+            </span>
+
+            <strong>
+                ${item.price}
+            </strong>
+
+        </div>
+
+    `;
+
+});
 
 
-    // Mobile menu
-    const menuButton =
-        document.querySelector(".menu-button");
+/* =========================
+   SERVICE DROPDOWN
+========================= */
 
-    const nav =
-        document.querySelector("nav");
+const serviceSelect =
+    document.getElementById("service");
+
+BUSINESS.services.forEach(function(service) {
+
+    const option =
+        document.createElement("option");
+
+    option.value = service.title;
+    option.textContent = service.title;
+
+    serviceSelect.appendChild(option);
+
+});
 
 
-    menuButton.addEventListener("click", function() {
+/* =========================
+   MOBILE MENU
+========================= */
 
-        if (nav.style.display === "flex") {
+const menuButton =
+    document.querySelector(".menu-button");
 
-            nav.style.display = "none";
+const nav =
+    document.querySelector("nav");
 
-        } else {
+menuButton.addEventListener("click", function() {
 
-            nav.style.display = "flex";
-            nav.style.position = "absolute";
-            nav.style.top = "70px";
-            nav.style.left = "0";
-            nav.style.width = "100%";
-            nav.style.background = "#0b0d10";
-            nav.style.padding = "25px";
-            nav.style.flexDirection = "column";
-            nav.style.gap = "20px";
+    nav.classList.toggle("active");
 
-        }
+});
+
+
+document.querySelectorAll("nav a").forEach(function(link) {
+
+    link.addEventListener("click", function() {
+
+        nav.classList.remove("active");
 
     });
 
+});
 
-    // Затваряне на менюто след натискане
-    document.querySelectorAll("nav a").forEach(function(link) {
 
-        link.addEventListener("click", function() {
+/* =========================
+   APPOINTMENT FORM
+========================= */
 
-            if (window.innerWidth <= 900) {
-                nav.style.display = "none";
-            }
+document
+    .getElementById("appointment-form")
+    .addEventListener("submit", function(event) {
 
-        });
+        event.preventDefault();
+
+        const name =
+            document.getElementById("name").value;
+
+        const phone =
+            document.getElementById("phone").value;
+
+        const car =
+            document.getElementById("car").value;
+
+        const service =
+            document.getElementById("service").value;
+
+        const message =
+            document.getElementById("message").value;
+
+
+        const subject =
+            encodeURIComponent(
+                "Ново запитване - " +
+                BUSINESS.name
+            );
+
+
+        const body =
+            encodeURIComponent(
+
+                "Име: " + name +
+
+                "\nТелефон: " + phone +
+
+                "\nАвтомобил: " + car +
+
+                "\nУслуга: " + service +
+
+                "\n\nСъобщение:\n" + message
+
+            );
+
+
+        window.location.href =
+            "mailto:" +
+            BUSINESS.email +
+            "?subject=" +
+            subject +
+            "&body=" +
+            body;
 
     });
-
-
-    // Форма за запазване на час
-    document
-        .getElementById("appointment-form")
-        .addEventListener("submit", function(event) {
-
-            event.preventDefault();
-
-            const name =
-                document.getElementById("name").value;
-
-            const phone =
-                document.getElementById("phone").value;
-
-            const car =
-                document.getElementById("car").value;
-
-            const service =
-                document.getElementById("service").value;
-
-            const message =
-                document.getElementById("message").value;
-
-
-            const subject =
-                encodeURIComponent(
-                    "Ново запитване - " + BUSINESS.name
-                );
-
-
-            const body =
-                encodeURIComponent(
-                    "Име: " + name +
-                    "\nТелефон: " + phone +
-                    "\nАвтомобил: " + car +
-                    "\nУслуга: " + service +
-                    "\n\nСъобщение:\n" + message
-                );
-
-
-            window.location.href =
-                "mailto:" +
-                BUSINESS.email +
-                "?subject=" +
-                subject +
-                "&body=" +
-                body;
-
-        });
 
 </script>
 
