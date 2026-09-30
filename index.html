@@ -1297,26 +1297,30 @@ revealElements.forEach(function(element) {
    GALLERY
 ========================= */
 
-const galleryContainer =
-    document.getElementById("gallery-container");
+document.addEventListener("DOMContentLoaded", function () {
 
-BUSINESS.gallery.forEach(function(image) {
+    const galleryContainer =
+        document.getElementById("gallery-container");
 
-    galleryContainer.innerHTML += `
+    BUSINESS.gallery.forEach(function(image) {
 
-        <div class="gallery-item">
+        galleryContainer.innerHTML += `
 
-            <img
-                src="${image}"
-                alt="${BUSINESS.name} - автомобилен сервиз"
-                loading="lazy"
-            >
+            <div class="gallery-item">
 
-        </div>
+                <img
+                    src="${image}"
+                    alt="${BUSINESS.name} - автомобилен сервиз"
+                    loading="lazy"
+                >
 
-    `;
+            </div>
 
-});  
+        `;
+
+    });
+
+});
     
 </script>
 
