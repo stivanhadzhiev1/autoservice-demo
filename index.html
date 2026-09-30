@@ -509,6 +509,73 @@ footer {
 }
 
 /* =========================
+   GALLERY
+========================= */
+
+.gallery-section {
+    background: #0b0b0b;
+}
+
+.gallery-grid {
+    max-width: 1200px;
+    margin: auto;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 15px;
+}
+
+.gallery-item {
+    height: 280px;
+
+    overflow: hidden;
+    border-radius: 10px;
+
+    cursor: pointer;
+
+    position: relative;
+}
+
+.gallery-item::after {
+    content: "VIEW";
+
+    position: absolute;
+    inset: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(0,0,0,0.55);
+
+    color: white;
+    font-weight: bold;
+    letter-spacing: 2px;
+
+    opacity: 0;
+
+    transition: 0.3s;
+}
+
+.gallery-item:hover::after {
+    opacity: 1;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    transition: transform 0.5s ease;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.08);
+}
+
+/* =========================
    MOBILE
 ========================= */
 
