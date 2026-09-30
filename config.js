@@ -145,5 +145,4 @@ gallery: [
     "https://images.unsplash.com/photo-1493238792000-8113da705763?auto=format&fit=crop&w=1200&q=80"
 
 ]
-
 };
