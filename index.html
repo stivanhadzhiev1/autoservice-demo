@@ -1403,6 +1403,54 @@ if (galleryContainer && BUSINESS.gallery) {
     });
 
 }
+
+/* =========================
+   GALLERY LIGHTBOX
+========================= */
+
+const lightbox = document.getElementById("lightbox");
+const lightboxImage = document.getElementById("lightbox-image");
+const lightboxClose = document.getElementById("lightbox-close");
+
+const galleryImages = document.querySelectorAll(".gallery-item img");
+
+galleryImages.forEach(function(image) {
+
+    image.addEventListener("click", function() {
+
+        lightboxImage.src = image.src;
+        lightbox.classList.add("active");
+
+        document.body.style.overflow = "hidden";
+
+    });
+
+});
+
+function closeLightbox() {
+
+    lightbox.classList.remove("active");
+    document.body.style.overflow = "";
+
+}
+
+lightboxClose.addEventListener("click", closeLightbox);
+
+lightbox.addEventListener("click", function(event) {
+
+    if (event.target === lightbox) {
+        closeLightbox();
+    }
+
+});
+
+document.addEventListener("keydown", function(event) {
+
+    if (event.key === "Escape") {
+        closeLightbox();
+    }
+
+});    
     
 </script>
 
