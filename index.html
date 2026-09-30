@@ -552,7 +552,73 @@ footer {
 .gallery-item:hover img {
     transform: scale(1.08);
 }
+    
+/* =========================
+   GALLERY LIGHTBOX
+========================= */
 
+.lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+
+    background: rgba(0, 0, 0, 0.95);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 40px;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transition: opacity 0.35s ease, visibility 0.35s ease;
+}
+
+.lightbox.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.lightbox-image {
+    max-width: 92vw;
+    max-height: 88vh;
+
+    object-fit: contain;
+    border-radius: 10px;
+
+    transform: scale(0.9);
+    transition: transform 0.35s ease;
+}
+
+.lightbox.active .lightbox-image {
+    transform: scale(1);
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 25px;
+    right: 35px;
+
+    border: none;
+    background: transparent;
+
+    color: white;
+    font-size: 50px;
+    line-height: 1;
+
+    cursor: pointer;
+    z-index: 10000;
+
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.lightbox-close:hover {
+    color: var(--main-color);
+    transform: scale(1.15);
+}
+    
 /* =========================
    MOBILE
 ========================= */
