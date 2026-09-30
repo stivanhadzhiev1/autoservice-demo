@@ -102,9 +102,10 @@ nav a:hover {
     display: flex;
     align-items: center;
     padding: 100px 8%;
+
     background:
-        linear-gradient(90deg, rgba(0,0,0,0.95), rgba(0,0,0,0.55)),
-        radial-gradient(circle at 80% 40%, rgba(255,59,48,0.15), transparent 40%);
+        linear-gradient(90deg, rgba(0,0,0,0.92), rgba(0,0,0,0.45)),
+        center/cover no-repeat;
 }
 
 .hero-content {
@@ -926,6 +927,10 @@ document.getElementById("footer-hours").textContent =
 document.querySelector(".about-image").style.backgroundImage =
     `linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.7)),
      url("${BUSINESS.aboutImage}")`;
+   
+    document.querySelector(".hero").style.backgroundImage =
+    `linear-gradient(90deg, rgba(0,0,0,0.92), rgba(0,0,0,0.45)),
+     url("${BUSINESS.heroImage}")`;
 
 /* =========================
    PHONE
