@@ -448,6 +448,43 @@ footer {
     color: #777;
     font-size: 14px;
 }
+ 
+    /* =========================
+   SCROLL ANIMATIONS
+========================= */
+
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.reveal-left {
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal-left.show {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.reveal-right {
+    opacity: 0;
+    transform: translateX(50px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal-right.show {
+    opacity: 1;
+    transform: translateX(0);
+}
 
 /* =========================
    MOBILE
@@ -1128,6 +1165,40 @@ document
             body;
 
     });
+
+    /* =========================
+   SCROLL ANIMATIONS
+========================= */
+
+const revealElements = document.querySelectorAll(
+    ".section-title, .card, .about-image, .about-text, .price, .review, .form, .contact"
+);
+
+revealElements.forEach(function(element) {
+    element.classList.add("reveal");
+});
+
+const observer = new IntersectionObserver(
+    function(entries) {
+
+        entries.forEach(function(entry) {
+
+            if (entry.isIntersecting) {
+                entry.target.classList.add("show");
+                observer.unobserve(entry.target);
+            }
+
+        });
+
+    },
+    {
+        threshold: 0.15
+    }
+);
+
+revealElements.forEach(function(element) {
+    observer.observe(element);
+});
 
 </script>
 
