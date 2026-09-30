@@ -919,7 +919,13 @@ document.getElementById("footer-city").textContent =
 
 document.getElementById("footer-hours").textContent =
     BUSINESS.workingHours;
+    /* =========================
+   СНИМКИ
+========================= */
 
+document.querySelector(".about-image").style.backgroundImage =
+    `linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.7)),
+     url("${BUSINESS.aboutImage}")`;
 
 /* =========================
    PHONE
