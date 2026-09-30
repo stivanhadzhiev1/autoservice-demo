@@ -1297,10 +1297,9 @@ revealElements.forEach(function(element) {
    GALLERY
 ========================= */
 
-document.addEventListener("DOMContentLoaded", function () {
+const galleryContainer = document.getElementById("gallery-container");
 
-    const galleryContainer =
-        document.getElementById("gallery-container");
+if (galleryContainer && BUSINESS.gallery) {
 
     BUSINESS.gallery.forEach(function(image) {
 
@@ -1320,7 +1319,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     });
 
-});
+}
     
 </script>
 
