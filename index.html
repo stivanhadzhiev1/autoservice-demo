@@ -949,56 +949,7 @@ footer {
 
     </div>
 
-    <div class="review-grid">
-
-        <div class="review">
-
-            <div class="stars">
-                ★★★★★
-            </div>
-
-            <p>
-                Много коректно отношение и бързо обслужване.
-                Препоръчвам!
-            </p>
-
-            <strong>Иван П.</strong>
-
-        </div>
-
-
-        <div class="review">
-
-            <div class="stars">
-                ★★★★★
-            </div>
-
-            <p>
-                Направиха диагностиката бързо и ми обясниха
-                точно какъв е проблемът.
-            </p>
-
-            <strong>Георги Д.</strong>
-
-        </div>
-
-
-        <div class="review">
-
-            <div class="stars">
-                ★★★★★
-            </div>
-
-            <p>
-                Добри цени и професионално отношение.
-                Ще посетя сервиза отново.
-            </p>
-
-            <strong>Николай К.</strong>
-
-        </div>
-
-    </div>
+<div class="review-grid" id="reviews-container"></div>
 
 </section>
 
@@ -1442,6 +1393,40 @@ if (galleryContainer && BUSINESS.gallery) {
                     alt="${BUSINESS.name} - автомобилен сервиз"
                     loading="lazy"
                 >
+
+            </div>
+
+        `;
+
+    });
+
+}
+
+    /* =========================
+   REVIEWS
+========================= */
+
+const reviewsContainer = document.getElementById("reviews-container");
+
+if (reviewsContainer && BUSINESS.reviews) {
+
+    BUSINESS.reviews.forEach(function(review) {
+
+        const stars = "★".repeat(review.rating);
+
+        reviewsContainer.innerHTML += `
+
+            <div class="review">
+
+                <div class="stars">
+                    ${stars}
+                </div>
+
+                <p>
+                    ${review.text}
+                </p>
+
+                <strong>${review.name}</strong>
 
             </div>
 
