@@ -598,24 +598,39 @@ footer {
     transform: scale(1);
 }
 
-.lightbox-close {
+.lightbox-arrow {
     position: absolute;
-    top: 25px;
-    right: 35px;
+    top: 50%;
+    transform: translateY(-50%);
+
+    width: 60px;
+    height: 60px;
 
     border: none;
-    background: transparent;
+    border-radius: 50%;
 
+    background: rgba(0, 0, 0, 0.55);
     color: white;
-    font-size: 50px;
-    line-height: 1;
 
+    font-size: 38px;
     cursor: pointer;
-    z-index: 10000;
 
-    transition: transform 0.2s ease, color 0.2s ease;
+    z-index: 10001;
+
+    transition: background 0.3s ease, transform 0.3s ease;
 }
 
+.lightbox-arrow:hover {
+    background: var(--main-color);
+}
+
+.lightbox-prev {
+    left: 30px;
+}
+
+.lightbox-next {
+    right: 30px;
+}
 .lightbox-close:hover {
     color: var(--main-color);
     transform: scale(1.15);
@@ -881,12 +896,20 @@ footer {
 
     <button class="lightbox-close" id="lightbox-close">&times;</button>
 
+    <button class="lightbox-arrow lightbox-prev" id="lightbox-prev">
+        &#10094;
+    </button>
+
     <img
         class="lightbox-image"
         id="lightbox-image"
         src=""
         alt="Голяма снимка"
     >
+
+    <button class="lightbox-arrow lightbox-next" id="lightbox-next">
+        &#10095;
+    </button>
 
 </div>
     
@@ -1413,18 +1436,48 @@ if (galleryContainer && BUSINESS.gallery) {
 const lightbox = document.getElementById("lightbox");
 const lightboxImage = document.getElementById("lightbox-image");
 const lightboxClose = document.getElementById("lightbox-close");
+    const lightboxPrev = document.getElementById("lightbox-prev");
+const lightboxNext = document.getElementById("lightbox-next");
+
+let currentImageIndex = 0;
 
 galleryContainer.onclick = function(event) {
 
     const clickedImage = event.target.closest(".gallery-item img");
 
     if (!clickedImage) return;
-
+currentImageIndex = BUSINESS.gallery.findIndex(function(image) {
+    return clickedImage.src.includes(image.split("?")[0]);
+});
     lightboxImage.src = clickedImage.src;
     lightbox.classList.add("active");
     document.body.style.overflow = "hidden";
 
 };
+
+function showImage(index) {
+
+    if (index < 0) {
+        index = BUSINESS.gallery.length - 1;
+    }
+
+    if (index >= BUSINESS.gallery.length) {
+        index = 0;
+    }
+
+    currentImageIndex = index;
+    lightboxImage.src = BUSINESS.gallery[currentImageIndex];
+}
+
+lightboxPrev.onclick = function(event) {
+    event.stopPropagation();
+    showImage(currentImageIndex - 1);
+};
+
+lightboxNext.onclick = function(event) {
+    event.stopPropagation();
+    showImage(currentImageIndex + 1);
+};    
     
 function closeLightbox() {
 
