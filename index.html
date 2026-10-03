@@ -1498,8 +1498,18 @@ lightbox.addEventListener("click", function(event) {
 
 document.addEventListener("keydown", function(event) {
 
+    if (!lightbox.classList.contains("active")) return;
+
     if (event.key === "Escape") {
         closeLightbox();
+    }
+
+    if (event.key === "ArrowLeft") {
+        showImage(currentImageIndex - 1);
+    }
+
+    if (event.key === "ArrowRight") {
+        showImage(currentImageIndex + 1);
     }
 
 });
