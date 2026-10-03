@@ -631,6 +631,28 @@ footer {
 .lightbox-next {
     right: 30px;
 }
+
+ .lightbox-close {
+    position: absolute;
+    top: 25px;
+    right: 30px;
+
+    width: 55px;
+    height: 55px;
+
+    border: none;
+    background: transparent;
+
+    color: white;
+    font-size: 48px;
+    line-height: 1;
+
+    cursor: pointer;
+    z-index: 10002;
+
+    transition: color 0.3s ease, transform 0.3s ease;
+}   
+    
 .lightbox-close:hover {
     color: var(--main-color);
     transform: scale(1.15);
