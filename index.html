@@ -1501,14 +1501,17 @@ document.addEventListener("keydown", function(event) {
     if (!lightbox.classList.contains("active")) return;
 
     if (event.key === "Escape") {
+        event.preventDefault();
         closeLightbox();
     }
 
     if (event.key === "ArrowLeft") {
+        event.preventDefault();
         showImage(currentImageIndex - 1);
     }
 
     if (event.key === "ArrowRight") {
+        event.preventDefault();
         showImage(currentImageIndex + 1);
     }
 
