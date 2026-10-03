@@ -1414,13 +1414,13 @@ const lightboxClose = document.getElementById("lightbox-close");
 
 galleryContainer.addEventListener("click", function(event) {
 
-    if (event.target.tagName === "IMG") {
+    const clickedImage = event.target.closest(".gallery-item img");
 
-        lightboxImage.src = event.target.src;
-        lightbox.classList.add("active");
+    if (!clickedImage) return;
 
-        document.body.style.overflow = "hidden";
-    }
+    lightboxImage.src = clickedImage.src;
+    lightbox.classList.add("active");
+    document.body.style.overflow = "hidden";
 
 });
 
