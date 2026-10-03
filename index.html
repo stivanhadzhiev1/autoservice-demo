@@ -1412,7 +1412,7 @@ const lightbox = document.getElementById("lightbox");
 const lightboxImage = document.getElementById("lightbox-image");
 const lightboxClose = document.getElementById("lightbox-close");
 
-galleryContainer.addEventListener("click", function(event) {
+galleryContainer.onclick = function(event) {
 
     const clickedImage = event.target.closest(".gallery-item img");
 
@@ -1422,8 +1422,8 @@ galleryContainer.addEventListener("click", function(event) {
     lightbox.classList.add("active");
     document.body.style.overflow = "hidden";
 
-});
-
+};
+    
 function closeLightbox() {
 
     lightbox.classList.remove("active");
