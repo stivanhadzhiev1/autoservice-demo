@@ -818,8 +818,8 @@ footer {
         <a href="#about">За нас</a>
         <a href="#prices">Цени</a>
         <a href="#reviews">Отзиви</a>
-        <a href="#location">Локация</a>
         <a href="#appointment">Запази час</a>
+        <a href="#location">Локация</a>
 
         <a id="header-phone"
            href="tel:0888123456"
@@ -1669,6 +1669,33 @@ document.addEventListener("keydown", function(event) {
         event.preventDefault();
         showImage(currentImageIndex + 1);
     }
+
+});
+
+/* =========================
+   NAVIGATION WITHOUT HISTORY
+========================= */
+
+document.querySelectorAll('a[href^="#"]').forEach(function(link) {
+
+    link.addEventListener("click", function(event) {
+
+        const targetId = this.getAttribute("href");
+
+        if (targetId === "#") return;
+
+        const target = document.querySelector(targetId);
+
+        if (target) {
+            event.preventDefault();
+
+            target.scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+            });
+        }
+
+    });
 
 });
     
