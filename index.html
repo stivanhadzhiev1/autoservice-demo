@@ -509,26 +509,70 @@ section {
 ========================= */
 
 footer {
-    text-align: center;
-    padding: 30px;
     background: #050505;
-    color: #777;
-    font-size: 14px;
+    border-top: 1px solid #222;
+    color: #aaa;
+    padding: 70px 8% 25px;
 }
 
-    .footer-socials {
+.footer-content {
+    max-width: 1200px;
+    margin: auto;
+
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 50px;
+}
+
+.footer-logo {
+    font-size: 26px;
+    font-weight: 900;
+    color: white;
+    margin-bottom: 18px;
+}
+
+.footer-brand p {
+    line-height: 1.7;
+    max-width: 300px;
+}
+
+.footer-content h3 {
+    color: white;
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.footer-info p {
+    margin-bottom: 15px;
+    line-height: 1.6;
+}
+
+.footer-links {
     display: flex;
-    justify-content: center;
-    gap: 12px;
-    margin-top: 18px;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.footer-links a {
+    color: #aaa;
+    text-decoration: none;
+    margin-bottom: 12px;
+    transition: 0.3s;
+}
+
+.footer-links a:hover {
+    color: var(--main-color);
+    transform: translateX(4px);
+}
+
+.footer-socials {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
 }
 
 .footer-socials a {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-
-    padding: 9px 18px;
+    padding: 10px 16px;
 
     border: 1px solid #333;
     border-radius: 6px;
@@ -545,6 +589,41 @@ footer {
     border-color: var(--main-color);
     background: var(--main-color);
     transform: translateY(-3px);
+}
+
+.footer-bottom {
+    max-width: 1200px;
+    margin: 50px auto 0;
+    padding-top: 25px;
+
+    border-top: 1px solid #222;
+
+    text-align: center;
+    font-size: 13px;
+    color: #666;
+}
+
+.footer-bottom strong {
+    color: #aaa;
+}
+
+
+/* FOOTER MOBILE */
+
+@media (max-width: 850px) {
+
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 35px;
+    }
+
+    footer {
+        padding: 50px 6% 25px;
+    }
+
+    .footer-bottom {
+        margin-top: 35px;
+    }
 }
  
     /* =========================
@@ -1214,38 +1293,93 @@ footer {
 
 <footer>
 
-    © 2026
+    <div class="footer-content">
 
-    <strong id="footer-business">
-        APEX AUTO
-    </strong>
+        <div class="footer-brand">
 
-    •
+            <div class="footer-logo">
+                <span id="footer-business">APEX AUTO</span>
+            </div>
 
-    <span id="footer-city">
-        Стара Загора
-    </span>
+            <p>
+                Професионална диагностика, ремонт и поддръжка
+                на вашия автомобил.
+            </p>
 
-    <br><br>
-    
-<div class="footer-socials">
-    <a id="footer-facebook" href="#" target="_blank" rel="noopener noreferrer">
-        Facebook
-    </a>
+        </div>
 
-    <a id="footer-instagram" href="#" target="_blank" rel="noopener noreferrer">
-        Instagram
-    </a>
-</div>
 
-<br>
-    
-    <span id="footer-hours">
-        Понеделник – Петък: 08:00 – 18:00
-    </span>
+        <div class="footer-info">
+
+            <h3>Контакти</h3>
+
+            <p>
+                📍 <span id="footer-city">Стара Загора</span>
+            </p>
+
+            <p>
+                🕒 <span id="footer-hours">
+                    Понеделник – Петък: 08:00 – 18:00
+                </span>
+            </p>
+
+        </div>
+
+
+        <div class="footer-links">
+
+            <h3>Бързи връзки</h3>
+
+            <a href="#services">Услуги</a>
+            <a href="#about">За нас</a>
+            <a href="#prices">Цени</a>
+            <a href="#reviews">Отзиви</a>
+            <a href="#appointment">Запази час</a>
+            <a href="#location">Локация</a>
+
+        </div>
+
+
+        <div class="footer-social">
+
+            <h3>Последвайте ни</h3>
+
+            <div class="footer-socials">
+
+                <a
+                    id="footer-facebook"
+                    href="#"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Facebook
+                </a>
+
+                <a
+                    id="footer-instagram"
+                    href="#"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Instagram
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+        © 2026
+        <strong id="footer-business-bottom">APEX AUTO</strong>
+        • Всички права запазени.
+
+    </div>
 
 </footer>
-
 
 <!-- =========================
      CONFIG
@@ -1279,6 +1413,9 @@ document.getElementById("about-business").textContent =
     BUSINESS.name;
 
 document.getElementById("footer-business").textContent =
+    BUSINESS.name;
+   
+    document.getElementById("footer-business-bottom").textContent =
     BUSINESS.name;
 
 document.getElementById("hero-city").textContent =
