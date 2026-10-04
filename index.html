@@ -323,6 +323,64 @@ section {
     font-size: 18px;
 }
 
+    /* =========================
+   GALLERY
+========================= */
+
+.gallery-section {
+    background: #0b0b0b;
+}
+
+.gallery-grid {
+    max-width: 1200px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+
+.gallery-item {
+    height: 280px;
+    overflow: hidden;
+    border-radius: 10px;
+    cursor: pointer;
+    position: relative;
+}
+
+.gallery-item::after {
+    content: "VIEW";
+    position: absolute;
+    inset: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(0, 0, 0, 0.55);
+    color: white;
+
+    font-weight: bold;
+    letter-spacing: 2px;
+
+    opacity: 0;
+    transition: 0.3s;
+}
+
+.gallery-item:hover::after {
+    opacity: 1;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.08);
+}
+
 /* =========================
    REVIEWS
 ========================= */
@@ -1127,6 +1185,28 @@ footer {
     </button>
 
 </div>
+
+    <!-- =========================
+     GALLERY
+========================= -->
+
+<section class="gallery-section" id="gallery">
+
+    <div class="section-title">
+
+        <small>ГАЛЕРИЯ</small>
+
+        <h2>Нашата работа</h2>
+
+        <p>
+            Разгледайте част от автомобилите и работата ни.
+        </p>
+
+    </div>
+
+    <div class="gallery-grid" id="gallery-container"></div>
+
+</section>
     
 <!-- =========================
      REVIEWS
@@ -1683,11 +1763,35 @@ document
     });
 
     /* =========================
+   GALLERY
+========================= */
+
+const galleryContainer = document.getElementById("gallery-container");
+
+BUSINESS.gallery.forEach(function(image) {
+
+    galleryContainer.innerHTML += `
+
+        <div class="gallery-item">
+
+            <img
+                src="${image}"
+                alt="${BUSINESS.name} - автомобилен сервиз"
+                loading="lazy"
+            >
+
+        </div>
+
+    `;
+
+});
+
+    /* =========================
    SCROLL ANIMATIONS
 ========================= */
 
 const revealElements = document.querySelectorAll(
-    ".section-title, .card, .about-image, .about-text, .price, .review, .form, .contact"
+    ".section-title, .card, .about-image, .about-text, .price, .review, .form, .contact", .gallery-item
 );
 
 revealElements.forEach(function(element) {
