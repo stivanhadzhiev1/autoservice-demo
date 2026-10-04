@@ -515,6 +515,37 @@ footer {
     color: #777;
     font-size: 14px;
 }
+
+    .footer-socials {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 18px;
+}
+
+.footer-socials a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 9px 18px;
+
+    border: 1px solid #333;
+    border-radius: 6px;
+
+    color: #aaa;
+    text-decoration: none;
+    font-weight: bold;
+
+    transition: 0.3s;
+}
+
+.footer-socials a:hover {
+    color: white;
+    border-color: var(--main-color);
+    background: var(--main-color);
+    transform: translateY(-3px);
+}
  
     /* =========================
    SCROLL ANIMATIONS
@@ -1196,7 +1227,19 @@ footer {
     </span>
 
     <br><br>
+    
+<div class="footer-socials">
+    <a id="footer-facebook" href="#" target="_blank" rel="noopener noreferrer">
+        Facebook
+    </a>
 
+    <a id="footer-instagram" href="#" target="_blank" rel="noopener noreferrer">
+        Instagram
+    </a>
+</div>
+
+<br>
+    
     <span id="footer-hours">
         Понеделник – Петък: 08:00 – 18:00
     </span>
@@ -1298,6 +1341,25 @@ document.getElementById("contact-email").href =
 
 document.getElementById("contact-hours").textContent =
     BUSINESS.workingHours;
+
+    /* =========================
+   SOCIAL MEDIA
+========================= */
+
+const facebookLink = document.getElementById("footer-facebook");
+const instagramLink = document.getElementById("footer-instagram");
+
+if (BUSINESS.facebook && BUSINESS.facebook !== "#") {
+    facebookLink.href = BUSINESS.facebook;
+} else {
+    facebookLink.style.display = "none";
+}
+
+if (BUSINESS.instagram && BUSINESS.instagram !== "#") {
+    instagramLink.href = BUSINESS.instagram;
+} else {
+    instagramLink.style.display = "none";
+}
 
     /* =========================
    MAP
