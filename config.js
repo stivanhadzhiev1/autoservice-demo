@@ -26,8 +26,8 @@ const BUSINESS = {
     // СОЦИАЛНИ МРЕЖИ
     // =========================
 
-    facebook: "https://www.facebook.com/",
-    instagram: "https://www.instagram.com/",
+   facebook: "#",
+   instagram: "#",
 
     // =========================
     // ЦВЯТ
