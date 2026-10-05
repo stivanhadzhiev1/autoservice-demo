@@ -1,1962 +1,1296 @@
 <!DOCTYPE html>
 <html lang="bg">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title id="page-title">APEX AUTO | Автосервиз</title>
-
-<style>
-
-:root {
-    --main-color: #ff3b30;
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="Професионална диагностика, ремонт и поддръжка на автомобили." name="description"/>
+  <meta content="#0b0b0b" name="theme-color"/>
+  <title id="page-title">
+   APEX AUTO | Автосервиз
+  </title>
+  <style>
+   :root {
+    --main:#ff3b30;
+    --bg:#0b0b0b;
+    --panel:#151515;
+    --muted:#aaa;
+    --line:#292929
 }
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+    box-sizing:border-box;
+    margin:0;
+    padding:0
 }
 
 html {
-    scroll-behavior: smooth;
+    scroll-behavior:smooth;
+    scroll-padding-top:75px
 }
 
 body {
-    font-family: Arial, Helvetica, sans-serif;
-    background: #0b0b0b;
-    color: white;
-    line-height: 1.6;
+    font-family:Arial,Helvetica,sans-serif;
+    background:var(--bg);
+    color:#fff;
+    line-height:1.6;
+    overflow-x:hidden
 }
 
 a {
-    text-decoration: none;
-    color: inherit;
+    text-decoration:none;
+    color:inherit
 }
 
-/* =========================
-   HEADER
-========================= */
+button,input,select,textarea {
+    font:inherit
+}
 
 header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 75px;
-    background: rgba(10,10,10,0.95);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 6%;
-    z-index: 1000;
-    border-bottom: 1px solid #222;
+    position:fixed;
+    inset:0 0 auto;
+    height:75px;
+    background:rgba(10,10,10,.92);
+    backdrop-filter:blur(10px);
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 6%;
+    z-index:1000;
+    border-bottom:1px solid #222
 }
 
 .logo {
-    font-size: 25px;
-    font-weight: 900;
-    letter-spacing: 2px;
+    font-size:25px;
+    font-weight:900;
+    letter-spacing:2px
 }
 
-.logo span:last-child {
-    color: var(--main-color);
+.logo .accent {
+    color:var(--main)
 }
 
 nav {
-    display: flex;
-    align-items: center;
-    gap: 28px;
+    display:flex;
+    align-items:center;
+    gap:25px
 }
 
 nav a {
-    font-size: 14px;
-    color: #ddd;
-    transition: 0.3s;
+    font-size:14px;
+    color:#ddd;
+    transition:.25s
 }
 
 nav a:hover {
-    color: var(--main-color);
+    color:var(--main)
+}
+
+.header-button,.button {
+    background:var(--main);
+    padding:13px 22px;
+    border-radius:7px;
+    color:#fff!important;
+    font-weight:700;
+    display:inline-block;
+    transition:.25s;
+    border:0;
+    cursor:pointer
 }
 
 .header-button {
-    background: var(--main-color);
-    padding: 10px 18px;
-    border-radius: 6px;
-    color: white !important;
-    font-weight: bold;
-}
-
-.menu-button {
-    display: none;
-    font-size: 28px;
-    cursor: pointer;
-}
-
-/* =========================
-   HERO
-========================= */
-
-.hero {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    padding: 100px 8%;
-
-    background:
-        linear-gradient(90deg, rgba(0,0,0,0.92), rgba(0,0,0,0.45)),
-        center/cover no-repeat;
-}
-
-.hero-content {
-    max-width: 750px;
-}
-
-.tag {
-    color: var(--main-color);
-    font-size: 14px;
-    font-weight: bold;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-}
-
-.hero h1 {
-    font-size: clamp(45px, 7vw, 85px);
-    line-height: 1;
-    margin: 20px 0;
-    font-weight: 900;
-}
-
-.hero h1 span {
-    color: var(--main-color);
-}
-
-.hero p {
-    max-width: 600px;
-    color: #bbb;
-    font-size: 18px;
-    margin-bottom: 35px;
-}
-
-.buttons {
-    display: flex;
-    gap: 15px;
-    flex-wrap: wrap;
-}
-
-.button {
-    display: inline-block;
-    background: var(--main-color);
-    padding: 15px 25px;
-    border-radius: 6px;
-    font-weight: bold;
-    transition: 0.3s;
+    padding:10px 18px
 }
 
 .button:hover {
-    transform: translateY(-3px);
-    opacity: 0.9;
+    transform:translateY(-3px);
+    filter:brightness(1.08)
 }
 
 .button-dark {
-    background: #1b1b1b;
-    border: 1px solid #333;
+    background:#1b1b1b;
+    border:1px solid #333
 }
 
-/* =========================
-   SECTIONS
-========================= */
+.menu-button {
+    display:none;
+    background:none;
+    border:0;
+    color:#fff;
+    font-size:29px;
+    cursor:pointer
+}
+
+.hero {
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    padding:110px 8% 80px;
+    background-position:center;
+    background-size:cover
+}
+
+.hero-content {
+    max-width:760px
+}
+
+.tag,.section-title small {
+    color:var(--main);
+    font-size:14px;
+    font-weight:800;
+    letter-spacing:2px;
+    text-transform:uppercase
+}
+
+.hero h1 {
+    font-size:clamp(45px,7vw,85px);
+    line-height:1;
+    margin:20px 0;
+    font-weight:900
+}
+
+.hero h1 span {
+    color:var(--main)
+}
+
+.hero p {
+    max-width:610px;
+    color:#c2c2c2;
+    font-size:18px;
+    margin-bottom:35px
+}
+
+.buttons {
+    display:flex;
+    gap:15px;
+    flex-wrap:wrap
+}
 
 section {
-    padding: 100px 8%;
+    padding:100px 8%
 }
 
 .section-title {
-    text-align: center;
-    max-width: 700px;
-    margin: 0 auto 55px;
+    text-align:center;
+    max-width:720px;
+    margin:0 auto 55px
 }
 
-.section-title small {
-    color: var(--main-color);
-    font-weight: bold;
-    letter-spacing: 2px;
+.section-title h2,.about-text h2 {
+    font-size:clamp(34px,4vw,44px);
+    line-height:1.15;
+    margin:10px 0
 }
 
-.section-title h2 {
-    font-size: 42px;
-    margin: 10px 0;
+.section-title p,.card p,.review p,.about-text p {
+    color:var(--muted)
 }
 
-.section-title p {
-    color: #999;
+.services,.prices,.appointment {
+    background:#111
 }
 
-/* =========================
-   SERVICES
-========================= */
-
-.services {
-    background: #111;
+.cards,.gallery-grid {
+    max-width:1200px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px
 }
 
-.cards {
-    max-width: 1200px;
-    margin: auto;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
+.card,.review,.form,.contact-item {
+    background:#181818;
+    border:1px solid #262626;
+    border-radius:12px
 }
 
 .card {
-    background: #181818;
-    padding: 35px;
-    border: 1px solid #252525;
-    border-radius: 10px;
-    transition: 0.3s;
+    padding:35px;
+    transition:.3s
 }
 
 .card:hover {
-    transform: translateY(-7px);
-    border-color: var(--main-color);
+    transform:translateY(-7px);
+    border-color:var(--main)
 }
 
 .icon {
-    font-size: 38px;
-    margin-bottom: 20px;
+    font-size:38px;
+    margin-bottom:18px
 }
 
 .card h3 {
-    margin-bottom: 10px;
-    font-size: 21px;
+    margin-bottom:10px;
+    font-size:21px
 }
-
-.card p {
-    color: #999;
-    font-size: 15px;
-}
-
-/* =========================
-   ABOUT
-========================= */
 
 .about {
-    max-width: 1200px;
-    margin: auto;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 60px;
-    align-items: center;
+    max-width:1200px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:60px;
+    align-items:center
 }
 
 .about-image {
-    height: 450px;
-    border-radius: 12px;
-    background:
-        linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.7)),
-        center/cover;
-}
-
-.about-text h2 {
-    font-size: 42px;
-    line-height: 1.1;
-    margin: 15px 0 20px;
+    height:460px;
+    border-radius:14px;
+    background-position:center;
+    background-size:cover
 }
 
 .about-text p {
-    color: #aaa;
-    margin-bottom: 15px;
+    margin-bottom:15px
 }
 
 .checks {
-    list-style: none;
-    margin-top: 25px;
+    list-style:none;
+    margin-top:25px
 }
 
 .checks li {
-    margin-bottom: 12px;
+    margin-bottom:12px
 }
 
-.checks li::before {
-    content: "✓";
-    color: var(--main-color);
-    font-weight: bold;
-    margin-right: 10px;
-}
-
-/* =========================
-   PRICES
-========================= */
-
-.prices {
-    background: #111;
+.checks li:before {
+    content:"✓";
+    color:var(--main);
+    font-weight:900;
+    margin-right:10px
 }
 
 .price-list {
-    max-width: 800px;
-    margin: auto;
+    max-width:820px;
+    margin:auto
 }
 
 .price {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 22px 25px;
-    border-bottom: 1px solid #292929;
-    background: #181818;
+    display:flex;
+    justify-content:space-between;
+    gap:20px;
+    align-items:center;
+    padding:22px 25px;
+    border-bottom:1px solid var(--line);
+    background:#181818
 }
 
 .price:first-child {
-    border-radius: 8px 8px 0 0;
+    border-radius:10px 10px 0 0
 }
 
 .price:last-child {
-    border-radius: 0 0 8px 8px;
-}
-
-.price span {
-    color: #ddd;
+    border-radius:0 0 10px 10px;
+    border-bottom:0
 }
 
 .price strong {
-    color: var(--main-color);
-    font-size: 18px;
-}
-
-    /* =========================
-   GALLERY
-========================= */
-
-.gallery-section {
-    background: #0b0b0b;
+    color:var(--main);
+    white-space:nowrap
 }
 
 .gallery-grid {
-    max-width: 1200px;
-    margin: auto;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 15px;
+    gap:15px
 }
 
 .gallery-item {
-    height: 280px;
-    overflow: hidden;
-    border-radius: 10px;
-    cursor: pointer;
-    position: relative;
+    height:280px;
+    overflow:hidden;
+    border-radius:11px;
+    cursor:pointer;
+    position:relative;
+    border:1px solid #222
 }
 
-.gallery-item::after {
-    content: "VIEW";
-    position: absolute;
-    inset: 0;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    background: rgba(0, 0, 0, 0.55);
-    color: white;
-
-    font-weight: bold;
-    letter-spacing: 2px;
-
-    opacity: 0;
-    transition: 0.3s;
+.gallery-item:after {
+    content:"ВИЖ СНИМКАТА";
+    position:absolute;
+    inset:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:rgba(0,0,0,.58);
+    font-weight:800;
+    letter-spacing:2px;
+    opacity:0;
+    transition:.3s;
+    pointer-events:none
 }
 
-.gallery-item:hover::after {
-    opacity: 1;
+.gallery-item:hover:after {
+    opacity:1
 }
 
 .gallery-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.5s ease;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+    transition:.5s
 }
 
 .gallery-item:hover img {
-    transform: scale(1.08);
-}
-
-/* =========================
-   REVIEWS
-========================= */
-
-.reviews {
-    background: #0b0b0b;
+    transform:scale(1.07)
 }
 
 .review-grid {
-    max-width: 1100px;
-    margin: auto;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
+    max-width:1100px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px
 }
 
 .review {
-    background: #151515;
-    padding: 30px;
-    border-radius: 10px;
-    border: 1px solid #242424;
+    padding:30px
 }
 
 .stars {
-    color: #ffc107;
-    margin-bottom: 15px;
+    color:#ffc107;
+    margin-bottom:15px;
+    letter-spacing:2px
 }
 
 .review p {
-    color: #aaa;
-    margin-bottom: 20px;
-}
-
-.review strong {
-    color: white;
-}
-
-/* =========================
-   APPOINTMENT
-========================= */
-
-.appointment {
-    background: #111;
+    margin-bottom:20px
 }
 
 .form {
-    max-width: 800px;
-    margin: auto;
-    background: #181818;
-    padding: 40px;
-    border-radius: 12px;
-    border: 1px solid #292929;
+    max-width:800px;
+    margin:auto;
+    padding:40px
 }
 
 .form-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 18px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:18px
 }
 
-.form input,
-.form select,
-.form textarea {
-    width: 100%;
-    background: #0d0d0d;
-    border: 1px solid #333;
-    color: white;
-    padding: 14px;
-    border-radius: 6px;
-    font-size: 15px;
+.form input,.form select,.form textarea {
+    width:100%;
+    background:#0d0d0d;
+    border:1px solid #333;
+    color:#fff;
+    padding:14px;
+    border-radius:7px;
+    outline:none
+}
+
+.form input:focus,.form select:focus,.form textarea:focus {
+    border-color:var(--main)
 }
 
 .form textarea {
-    min-height: 130px;
-    resize: vertical;
-    margin-top: 18px;
+    min-height:130px;
+    resize:vertical;
+    margin-top:18px
 }
 
 .form button {
-    border: none;
-    cursor: pointer;
-    margin-top: 18px;
-    width: 100%;
+    width:100%;
+    margin-top:18px
 }
 
-/* =========================
-   CONTACT
-========================= */
-
 .contact {
-    text-align: center;
-    background:
-        linear-gradient(rgba(0,0,0,0.88), rgba(0,0,0,0.95)),
-        radial-gradient(circle at center, rgba(255,59,48,0.18), transparent 60%);
+    text-align:center;
+    background:radial-gradient(circle at center,rgba(255,59,48,.12),transparent 60%),#0b0b0b
 }
 
 .contact-info {
-    max-width: 1200px;
-    margin: 45px auto 40px;
-
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
+    max-width:1200px;
+    margin:45px auto 40px;
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px
 }
 
 .contact-item {
-    background: #141414;
-    border: 1px solid #2a2a2a;
-    border-radius: 12px;
-
-    padding: 35px 20px;
-
-    transition: transform 0.3s ease,
-                border-color 0.3s ease,
-                box-shadow 0.3s ease;
+    padding:35px 20px;
+    transition:.3s
 }
 
 .contact-item:hover {
-    transform: translateY(-7px);
-    border-color: var(--main-color);
-
-    box-shadow:
-        0 15px 35px rgba(0,0,0,0.35),
-        0 0 20px rgba(255,59,48,0.08);
+    transform:translateY(-7px);
+    border-color:var(--main)
 }
 
 .contact-item span {
-    display: block;
-    font-size: 34px;
-    margin-bottom: 18px;
+    display:block;
+    font-size:34px;
+    margin-bottom:15px
 }
 
 .contact-item h3 {
-    font-size: 19px;
-    margin-bottom: 12px;
-    color: white;
+    margin-bottom:10px
 }
 
-.contact-item p,
-.contact-item a {
-    color: #aaa;
-    text-decoration: none;
-    line-height: 1.6;
+.contact-item p,.contact-item a {
+    color:#aaa
 }
 
 .contact-item a:hover {
-    color: var(--main-color);
+    color:var(--main)
 }
-
-.contact > .button {
-    margin-top: 5px;
-}
-
-    /* =========================
-   MAP
-========================= */
 
 .map-section {
-    background: #0b0b0b;
-    padding-top: 80px;
+    padding-top:80px
 }
 
 .map-container {
-    max-width: 1200px;
-    height: 450px;
-    margin: 40px auto 0;
-
-    border-radius: 14px;
-    overflow: hidden;
-
-    border: 1px solid #2a2a2a;
+    max-width:1200px;
+    height:450px;
+    margin:auto;
+    border-radius:14px;
+    overflow:hidden;
+    border:1px solid #2a2a2a
 }
 
 .map-container iframe {
-    width: 100%;
-    height: 100%;
-
-    border: 0;
-    display: block;
+    width:100%;
+    height:100%;
+    border:0;
+    display:block
 }
 
-/* =========================
-   FOOTER
-========================= */
-
 footer {
-    background: #050505;
-    border-top: 1px solid #222;
-    color: #aaa;
-    padding: 70px 8% 25px;
+    background:#050505;
+    border-top:1px solid #222;
+    color:#aaa;
+    padding:65px 8% 25px
 }
 
 .footer-content {
-    max-width: 1200px;
-    margin: auto;
-
-    display: grid;
-    grid-template-columns: 1.5fr 1fr 1fr 1fr;
-    gap: 50px;
+    max-width:1200px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:1.5fr 1fr 1fr 1fr;
+    gap:45px
 }
 
 .footer-logo {
-    font-size: 26px;
-    font-weight: 900;
-    color: white;
-    margin-bottom: 18px;
-}
-
-.footer-brand p {
-    line-height: 1.7;
-    max-width: 300px;
+    font-size:26px;
+    font-weight:900;
+    color:#fff;
+    margin-bottom:15px
 }
 
 .footer-content h3 {
-    color: white;
-    font-size: 16px;
-    margin-bottom: 20px;
+    color:#fff;
+    font-size:16px;
+    margin-bottom:18px
 }
 
 .footer-info p {
-    margin-bottom: 15px;
-    line-height: 1.6;
+    margin-bottom:12px
 }
 
 .footer-links {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start
 }
 
 .footer-links a {
-    color: #aaa;
-    text-decoration: none;
-    margin-bottom: 12px;
-    transition: 0.3s;
+    margin-bottom:10px;
+    transition:.25s
 }
 
 .footer-links a:hover {
-    color: var(--main-color);
-    transform: translateX(4px);
+    color:var(--main);
+    transform:translateX(4px)
 }
 
 .footer-socials {
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap
 }
 
 .footer-socials a {
-    padding: 10px 16px;
-
-    border: 1px solid #333;
-    border-radius: 6px;
-
-    color: #aaa;
-    text-decoration: none;
-    font-weight: bold;
-
-    transition: 0.3s;
+    padding:9px 14px;
+    border:1px solid #333;
+    border-radius:6px;
+    transition:.25s
 }
 
 .footer-socials a:hover {
-    color: white;
-    border-color: var(--main-color);
-    background: var(--main-color);
-    transform: translateY(-3px);
+    background:var(--main);
+    border-color:var(--main);
+    color:#fff
 }
 
 .footer-bottom {
-    max-width: 1200px;
-    margin: 50px auto 0;
-    padding-top: 25px;
-
-    border-top: 1px solid #222;
-
-    text-align: center;
-    font-size: 13px;
-    color: #666;
+    max-width:1200px;
+    margin:45px auto 0;
+    padding-top:22px;
+    border-top:1px solid #222;
+    text-align:center;
+    font-size:13px;
+    color:#666
 }
-
-.footer-bottom strong {
-    color: #aaa;
-}
-
-
-/* FOOTER MOBILE */
-
-@media (max-width: 850px) {
-
-    .footer-content {
-        grid-template-columns: 1fr;
-        gap: 35px;
-    }
-
-    footer {
-        padding: 50px 6% 25px;
-    }
-
-    .footer-bottom {
-        margin-top: 35px;
-    }
-}
- 
-    /* =========================
-   SCROLL ANIMATIONS
-========================= */
-
-.reveal {
-    opacity: 0;
-    transform: translateY(40px);
-    transition: opacity 0.8s ease, transform 0.8s ease;
-}
-
-.reveal.show {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.reveal-left {
-    opacity: 0;
-    transform: translateX(-50px);
-    transition: opacity 0.8s ease, transform 0.8s ease;
-}
-
-.reveal-left.show {
-    opacity: 1;
-    transform: translateX(0);
-}
-
-.reveal-right {
-    opacity: 0;
-    transform: translateX(50px);
-    transition: opacity 0.8s ease, transform 0.8s ease;
-}
-
-.reveal-right.show {
-    opacity: 1;
-    transform: translateX(0);
-}
-
-/* =========================
-   GALLERY
-========================= */
-
-.gallery-section {
-    background: #0b0b0b;
-}
-
-.gallery-grid {
-    max-width: 1200px;
-    margin: auto;
-
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-
-    gap: 15px;
-}
-
-.gallery-item {
-    height: 280px;
-
-    overflow: hidden;
-    border-radius: 10px;
-
-    cursor: pointer;
-
-    position: relative;
-}
-
-.gallery-item::after {
-    content: "VIEW";
-
-    position: absolute;
-    inset: 0;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    background: rgba(0,0,0,0.55);
-
-    color: white;
-    font-weight: bold;
-    letter-spacing: 2px;
-
-    opacity: 0;
-
-    transition: 0.3s;
-    pointer-events: none;
-    
-}
-
-.gallery-item:hover::after {
-    opacity: 1;
-}
-
-.gallery-item img {
-    width: 100%;
-    height: 100%;
-
-    object-fit: cover;
-
-    transition: transform 0.5s ease;
-}
-
-.gallery-item:hover img {
-    transform: scale(1.08);
-}
-    
-/* =========================
-   GALLERY LIGHTBOX
-========================= */
 
 .lightbox {
-    position: fixed;
-    inset: 0;
-    z-index: 9999;
-
-    background: rgba(0, 0, 0, 0.95);
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    padding: 40px;
-
-    opacity: 0;
-    visibility: hidden;
-
-    transition: opacity 0.35s ease, visibility 0.35s ease;
+    position:fixed;
+    inset:0;
+    z-index:9999;
+    background:rgba(0,0,0,.96);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:40px;
+    opacity:0;
+    visibility:hidden;
+    transition:.3s
 }
 
 .lightbox.active {
-    opacity: 1;
-    visibility: visible;
+    opacity:1;
+    visibility:visible
 }
 
 .lightbox-image {
-    max-width: 92vw;
-    max-height: 88vh;
-
-    object-fit: contain;
-    border-radius: 10px;
-
-    transform: scale(0.9);
-    transition: transform 0.35s ease;
+    max-width:92vw;
+    max-height:88vh;
+    object-fit:contain;
+    border-radius:10px;
+    transform:scale(.94);
+    transition:.3s
 }
 
 .lightbox.active .lightbox-image {
-    transform: scale(1);
+    transform:scale(1)
+}
+
+.lightbox-close,.lightbox-arrow {
+    position:absolute;
+    border:0;
+    color:#fff;
+    cursor:pointer;
+    z-index:10001
+}
+
+.lightbox-close {
+    top:20px;
+    right:25px;
+    background:transparent;
+    font-size:50px
 }
 
 .lightbox-arrow {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-
-    width: 60px;
-    height: 60px;
-
-    border: none;
-    border-radius: 50%;
-
-    background: rgba(0, 0, 0, 0.55);
-    color: white;
-
-    font-size: 38px;
-    cursor: pointer;
-
-    z-index: 10001;
-
-    transition: background 0.3s ease, transform 0.3s ease;
+    top:50%;
+    transform:translateY(-50%);
+    width:58px;
+    height:58px;
+    border-radius:50%;
+    background:rgba(20,20,20,.7);
+    font-size:35px
 }
 
 .lightbox-arrow:hover {
-    background: var(--main-color);
+    background:var(--main)
 }
 
 .lightbox-prev {
-    left: 30px;
+    left:25px
 }
 
 .lightbox-next {
-    right: 30px;
+    right:25px
 }
 
- .lightbox-close {
-    position: absolute;
-    top: 25px;
-    right: 30px;
-
-    width: 55px;
-    height: 55px;
-
-    border: none;
-    background: transparent;
-
-    color: white;
-    font-size: 48px;
-    line-height: 1;
-
-    cursor: pointer;
-    z-index: 10002;
-
-    transition: color 0.3s ease, transform 0.3s ease;
-}   
-    
-.lightbox-close:hover {
-    color: var(--main-color);
-    transform: scale(1.15);
+.reveal {
+    opacity:0;
+    transform:translateY(32px);
+    transition:opacity .7s ease,transform .7s ease
 }
-    
-/* =========================
-   MOBILE
-========================= */
 
-@media (max-width: 850px) {
+.reveal.show {
+    opacity:1;
+    transform:none
+}
 
+@media(prefers-reduced-motion:reduce) {
+    html {
+        scroll-behavior:auto
+    }
+    .reveal {
+        opacity:1;
+        transform:none;
+        transition:none
+    }
+}
+
+@media(max-width:900px) {
     nav {
-        display: none;
-        position: absolute;
-        top: 75px;
-        left: 0;
-        width: 100%;
-        background: #111;
-        flex-direction: column;
-        padding: 25px;
-        gap: 20px;
-        border-bottom: 1px solid #333;
+        display:none;
+        position:absolute;
+        top:75px;
+        left:0;
+        width:100%;
+        background:#111;
+        flex-direction:column;
+        padding:25px;
+        gap:20px;
+        border-bottom:1px solid #333
     }
-
     nav.active {
-        display: flex;
+        display:flex
     }
-
     .menu-button {
-        display: block;
+        display:block
     }
-
-    .cards {
-        grid-template-columns: 1fr;
+    .cards,.gallery-grid,.review-grid {
+        grid-template-columns:1fr 1fr
     }
-
     .about {
-        grid-template-columns: 1fr;
+        grid-template-columns:1fr
     }
-
-    .review-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .form-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .hero h1 {
-        font-size: 48px;
-    }
-
-    .section-title h2 {
-        font-size: 34px;
-    }
-
-    .contact h2 {
-        font-size: 34px;
-    }
-.contact-info {
-    grid-template-columns: 1fr 1fr;
-}
-
-.contact-item {
-    padding: 30px 15px;
-}
-}
-
-    @media (max-width: 550px) {
-
     .contact-info {
-        grid-template-columns: 1fr;
+        grid-template-columns:1fr 1fr
     }
-
+    .footer-content {
+        grid-template-columns:1fr 1fr
+    }
+    .hero {
+        padding-left:6%;
+        padding-right:6%
+    }
 }
-    
-</style>
-</head>
 
-<body>
-
-<!-- =========================
-     HEADER
-========================= -->
-
-<header>
-
-    <div class="logo">
-        <span id="logo-name">APEX</span>
-        <span>AUTO</span>
-    </div>
-
-    <nav>
-
-        <a href="#services">Услуги</a>
-        <a href="#about">За нас</a>
-        <a href="#prices">Цени</a>
-        <a href="#reviews">Отзиви</a>
-        <a href="#appointment">Запази час</a>
-        <a href="#location">Локация</a>
-
-        <a id="header-phone"
-           href="tel:0888123456"
-           class="header-button">
-            0888 123 456
-        </a>
-
-    </nav>
-
-    <div class="menu-button">☰</div>
-
-</header>
-
-
-<!-- =========================
-     HERO
-========================= -->
-
-<section class="hero">
-
-    <div class="hero-content">
-
-        <div class="tag">
-            Автосервиз •
-            <span id="hero-city">Стара Загора</span>
-        </div>
-
-        <h1>
-            Автомобилът ти.<br>
-            <span>Нашата работа.</span>
-        </h1>
-
-        <p>
-            Професионална диагностика, ремонт и поддръжка
-            на автомобили. Бързо, качествено и коректно.
-        </p>
-
-        <div class="buttons">
-
-            <a href="#appointment" class="button">
-                Запази час →
-            </a>
-
-            <a id="hero-phone"
-               href="tel:0888123456"
-               class="button button-dark">
-                📞 0888 123 456
-            </a>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =========================
-     SERVICES
-========================= -->
-
-<section class="services" id="services">
-
-    <div class="section-title">
-
-        <small>КАКВО ПРАВИМ</small>
-
-        <h2>Нашите услуги</h2>
-
-        <p>
-            Всичко необходимо за поддръжката и ремонта
-            на твоя автомобил на едно място.
-        </p>
-
-    </div>
-
-    <div class="cards" id="services-container"></div>
-
-</section>
-
-
-<!-- =========================
-     ABOUT
-========================= -->
-
-<section id="about">
-
-    <div class="about">
-
-        <div class="about-image"></div>
-
-        <div class="about-text">
-
-            <small class="tag">
-                ЗА НАС
-            </small>
-
-            <h2>
-                Автомобилът ти е в добри ръце.
-            </h2>
-
-            <p>
-                В <span id="about-business">APEX AUTO</span>
-                вярваме, че добрият автосервиз започва
-                с коректно отношение към клиента.
-            </p>
-
-            <p>
-                Работим с внимание към всеки автомобил
-                и се стремим да предлагаме качествено
-                обслужване на разумна цена.
-            </p>
-
-            <ul class="checks">
-
-                <li>Професионално отношение</li>
-                <li>Коректни цени</li>
-                <li>Качествени части и консумативи</li>
-                <li>Бързо обслужване</li>
-
-            </ul>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =========================
-     PRICES
-========================= -->
-
-<section class="prices" id="prices">
-
-    <div class="section-title">
-
-        <small>ЦЕНОРАЗПИС</small>
-
-        <h2>Ориентировъчни цени</h2>
-
-        <p>
-            Крайната цена може да бъде уточнена
-            след преглед на автомобила.
-        </p>
-
-    </div>
-
-    <div class="price-list" id="prices-container"></div>
-
-</section>
-    
-  <!-- =========================
-     GALLERY
-========================= -->
-
-<section class="gallery-section" id="gallery">
-
-    <div class="section-title">
-
-        <small>ГАЛЕРИЯ</small>
-
-        <h2>Нашата работа</h2>
-
-        <p>
-            Разгледайте част от автомобилите и работата ни.
-        </p>
-
-    </div>
-
-    <div class="gallery-grid" id="gallery-container"></div>
-
-</section>
-
-    <!-- =========================
-     GALLERY LIGHTBOX
-========================= -->
-
-<div class="lightbox" id="lightbox">
-
-    <button class="lightbox-close" id="lightbox-close">&times;</button>
-
-    <button class="lightbox-arrow lightbox-prev" id="lightbox-prev">
-        &#10094;
-    </button>
-
-    <img
-        class="lightbox-image"
-        id="lightbox-image"
-        src=""
-        alt="Голяма снимка"
-    >
-
-    <button class="lightbox-arrow lightbox-next" id="lightbox-next">
-        &#10095;
-    </button>
-
-</div>
-    
-<!-- =========================
-     REVIEWS
-========================= -->
-
-<section class="reviews" id="reviews">
-
-    <div class="section-title">
-
-        <small>ОТЗИВИ</small>
-
-        <h2>Какво казват клиентите</h2>
-
-    </div>
-
-<div class="review-grid" id="reviews-container"></div>
-
-</section>
-
-
-<!-- =========================
-     APPOINTMENT
-========================= -->
-
-<section class="appointment" id="appointment">
-
-    <div class="section-title">
-
-        <small>ЗАПАЗИ ЧАС</small>
-
-        <h2>Изпрати запитване</h2>
-
-        <p>
-            Попълни формата и ще се свържем с теб.
-        </p>
-
-    </div>
-
-
-    <form class="form" id="appointment-form">
-
-        <div class="form-grid">
-
-            <input
-                type="text"
-                id="name"
-                placeholder="Име"
-                required
-            >
-
-            <input
-                type="tel"
-                id="phone"
-                placeholder="Телефон"
-                required
-            >
-
-            <input
-                type="text"
-                id="car"
-                placeholder="Автомобил"
-            >
-
-            <select id="service">
-
-                <option value="">
-                    Избери услуга
-                </option>
-
-            </select>
-
-        </div>
-
-
-        <textarea
-            id="message"
-            placeholder="Допълнително съобщение..."
-        ></textarea>
-
-
-        <button
-            type="submit"
-            class="button">
-            Изпрати запитване →
-        </button>
-
-    </form>
-
-</section>
-
-
-<!-- =========================
-     CONTACT
-========================= -->
-
-<section class="contact">
-
-    <div class="section-title">
-        <small>КОНТАКТИ</small>
-        <h2>Готови сме да помогнем.</h2>
-        <p>Свържи се с нас или запази час за твоя автомобил.</p>
-    </div>
-
-    <div class="contact-info">
-
-        <div class="contact-item">
-            <span>📍</span>
-            <h3>Адрес</h3>
-            <p id="contact-address"></p>
-        </div>
-
-        <div class="contact-item">
-            <span>📞</span>
-            <h3>Телефон</h3>
-            <a id="contact-phone" href="#"></a>
-        </div>
-
-        <div class="contact-item">
-            <span>✉️</span>
-            <h3>Имейл</h3>
-            <a id="contact-email" href="#"></a>
-        </div>
-
-        <div class="contact-item">
-            <span>🕒</span>
-            <h3>Работно време</h3>
-            <p id="contact-hours"></p>
-        </div>
-
-    </div>
-
-    <a href="#appointment" class="button">
-        Запази час →
+@media(max-width:600px) {
+    section {
+        padding:75px 6%
+    }
+    .cards,.gallery-grid,.review-grid,.form-grid,.contact-info,.footer-content {
+        grid-template-columns:1fr
+    }
+    .gallery-item {
+        height:245px
+    }
+    .about-image {
+        height:330px
+    }
+    .form {
+        padding:25px
+    }
+    .price {
+        padding:18px 16px
+    }
+    .lightbox {
+        padding:15px
+    }
+    .lightbox-arrow {
+        width:45px;
+        height:45px;
+        font-size:28px
+    }
+    .lightbox-prev {
+        left:8px
+    }
+    .lightbox-next {
+        right:8px
+    }
+    .hero h1 {
+        font-size:48px
+    }
+}
+  </style>
+ </head>
+ <body>
+  <header>
+   <a class="logo" href="#top">
+    <span id="logo-name">
+     APEX
+    </span>
+    <span class="accent">
+     AUTO
+    </span>
+   </a>
+   <nav id="nav">
+    <a href="#services">
+     Услуги
     </a>
-
-</section>
-
-  <!-- =========================
-     MAP
-========================= -->
-
-<section class="map-section" id="location">
-
+    <a href="#about">
+     За нас
+    </a>
+    <a href="#prices">
+     Цени
+    </a>
+    <a href="#gallery">
+     Галерия
+    </a>
+    <a href="#reviews">
+     Отзиви
+    </a>
+    <a href="#appointment">
+     Запази час
+    </a>
+    <a href="#location">
+     Локация
+    </a>
+    <a class="header-button" href="#" id="header-phone">
+     0888 123 456
+    </a>
+   </nav>
+   <button aria-expanded="false" aria-label="Отвори меню" class="menu-button">
+    ☰
+   </button>
+  </header>
+  <main id="top">
+   <section class="hero">
+    <div class="hero-content">
+     <div class="tag">
+      Автосервиз •
+      <span id="hero-city">
+      </span>
+     </div>
+     <h1>
+      Автомобилът ти.
+      <br/>
+      <span>
+       Нашата работа.
+      </span>
+     </h1>
+     <p>
+      Професионална диагностика, ремонт и поддръжка на автомобили. Бързо, качествено и коректно.
+     </p>
+     <div class="buttons">
+      <a class="button" href="#appointment">
+       Запази час →
+      </a>
+      <a class="button button-dark" href="#" id="hero-phone">
+      </a>
+     </div>
+    </div>
+   </section>
+   <section class="services" id="services">
     <div class="section-title">
-        <small>ЛОКАЦИЯ</small>
-        <h2>Намерете ни</h2>
-        <p>Посетете нашия сервиз.</p>
+     <small>
+      КАКВО ПРАВИМ
+     </small>
+     <h2>
+      Нашите услуги
+     </h2>
+     <p>
+      Всичко необходимо за поддръжката и ремонта на твоя автомобил на едно място.
+     </p>
     </div>
-
+    <div class="cards" id="services-container">
+    </div>
+   </section>
+   <section id="about">
+    <div class="about">
+     <div aria-label="Автосервиз" class="about-image" role="img">
+     </div>
+     <div class="about-text">
+      <small class="tag">
+       ЗА НАС
+      </small>
+      <h2>
+       Автомобилът ти е в добри ръце.
+      </h2>
+      <p>
+       В
+       <span id="about-business">
+       </span>
+       вярваме, че добрият автосервиз започва с коректно отношение към клиента.
+      </p>
+      <p>
+       Работим с внимание към всеки автомобил и се стремим да предлагаме качествено обслужване на разумна цена.
+      </p>
+      <ul class="checks">
+       <li>
+        Професионално отношение
+       </li>
+       <li>
+        Коректни цени
+       </li>
+       <li>
+        Качествени части и консумативи
+       </li>
+       <li>
+        Бързо обслужване
+       </li>
+      </ul>
+     </div>
+    </div>
+   </section>
+   <section class="prices" id="prices">
+    <div class="section-title">
+     <small>
+      ЦЕНОРАЗПИС
+     </small>
+     <h2>
+      Ориентировъчни цени
+     </h2>
+     <p>
+      Крайната цена може да бъде уточнена след преглед на автомобила.
+     </p>
+    </div>
+    <div class="price-list" id="prices-container">
+    </div>
+   </section>
+   <section id="gallery">
+    <div class="section-title">
+     <small>
+      ГАЛЕРИЯ
+     </small>
+     <h2>
+      Нашата работа
+     </h2>
+     <p>
+      Разгледайте част от автомобилите и работата ни.
+     </p>
+    </div>
+    <div class="gallery-grid" id="gallery-container">
+    </div>
+   </section>
+   <section id="reviews">
+    <div class="section-title">
+     <small>
+      ОТЗИВИ
+     </small>
+     <h2>
+      Какво казват клиентите
+     </h2>
+    </div>
+    <div class="review-grid" id="reviews-container">
+    </div>
+   </section>
+   <section class="appointment" id="appointment">
+    <div class="section-title">
+     <small>
+      ЗАПАЗИ ЧАС
+     </small>
+     <h2>
+      Изпрати запитване
+     </h2>
+     <p>
+      Попълни формата и ще се отвори готов имейл към сервиза.
+     </p>
+    </div>
+    <form class="form" id="appointment-form">
+     <div class="form-grid">
+      <input autocomplete="name" id="name" placeholder="Име" required="" type="text"/>
+      <input autocomplete="tel" id="phone" placeholder="Телефон" required="" type="tel"/>
+      <input id="car" placeholder="Автомобил" type="text"/>
+      <select id="service">
+       <option value="">
+        Избери услуга
+       </option>
+      </select>
+     </div>
+     <textarea id="message" placeholder="Допълнително съобщение..."></textarea>
+     <button class="button" type="submit">
+      Изпрати запитване →
+     </button>
+    </form>
+   </section>
+   <section class="contact">
+    <div class="section-title">
+     <small>
+      КОНТАКТИ
+     </small>
+     <h2>
+      Готови сме да помогнем.
+     </h2>
+     <p>
+      Свържи се с нас или запази час за твоя автомобил.
+     </p>
+    </div>
+    <div class="contact-info">
+     <div class="contact-item">
+      <span>
+       📍
+      </span>
+      <h3>
+       Адрес
+      </h3>
+      <p id="contact-address">
+      </p>
+     </div>
+     <div class="contact-item">
+      <span>
+       📞
+      </span>
+      <h3>
+       Телефон
+      </h3>
+      <a id="contact-phone">
+      </a>
+     </div>
+     <div class="contact-item">
+      <span>
+       ✉️
+      </span>
+      <h3>
+       Имейл
+      </h3>
+      <a id="contact-email">
+      </a>
+     </div>
+     <div class="contact-item">
+      <span>
+       🕒
+      </span>
+      <h3>
+       Работно време
+      </h3>
+      <p id="contact-hours">
+      </p>
+     </div>
+    </div>
+    <a class="button" href="#appointment">
+     Запази час →
+    </a>
+   </section>
+   <section class="map-section" id="location">
+    <div class="section-title">
+     <small>
+      ЛОКАЦИЯ
+     </small>
+     <h2>
+      Намерете ни
+     </h2>
+     <p>
+      Посетете нашия сервиз.
+     </p>
+    </div>
     <div class="map-container">
-        <iframe
-            id="business-map"
-            src=""
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade">
-        </iframe>
+     <iframe id="business-map" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Карта на автосервиза">
+     </iframe>
     </div>
-
-</section>  
-
-<!-- =========================
-     FOOTER
-========================= -->
-
-<footer>
-
-    <div class="footer-content">
-
-        <div class="footer-brand">
-
-            <div class="footer-logo">
-                <span id="footer-business">APEX AUTO</span>
-            </div>
-
-            <p>
-                Професионална диагностика, ремонт и поддръжка
-                на вашия автомобил.
-            </p>
-
-        </div>
-
-
-        <div class="footer-info">
-
-            <h3>Контакти</h3>
-
-            <p>
-                📍 <span id="footer-city">Стара Загора</span>
-            </p>
-
-            <p>
-                🕒 <span id="footer-hours">
-                    Понеделник – Петък: 08:00 – 18:00
-                </span>
-            </p>
-
-        </div>
-
-
-        <div class="footer-links">
-
-            <h3>Бързи връзки</h3>
-
-            <a href="#services">Услуги</a>
-            <a href="#about">За нас</a>
-            <a href="#prices">Цени</a>
-            <a href="#reviews">Отзиви</a>
-            <a href="#appointment">Запази час</a>
-            <a href="#location">Локация</a>
-
-        </div>
-
-
-        <div class="footer-social">
-
-            <h3>Последвайте ни</h3>
-
-            <div class="footer-socials">
-
-                <a
-                    id="footer-facebook"
-                    href="#"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    Facebook
-                </a>
-
-                <a
-                    id="footer-instagram"
-                    href="#"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    Instagram
-                </a>
-
-            </div>
-
-        </div>
-
+   </section>
+  </main>
+  <footer>
+   <div class="footer-content">
+    <div>
+     <div class="footer-logo" id="footer-business">
+     </div>
+     <p>
+      Професионална диагностика, ремонт и поддръжка на вашия автомобил.
+     </p>
     </div>
-
-
-    <div class="footer-bottom">
-
-        © 2026
-        <strong id="footer-business-bottom">APEX AUTO</strong>
-        • Всички права запазени.
-
+    <div class="footer-info">
+     <h3>
+      Контакти
+     </h3>
+     <p>
+      📍
+      <span id="footer-city">
+      </span>
+     </p>
+     <p>
+      🕒
+      <span id="footer-hours">
+      </span>
+     </p>
     </div>
-
-</footer>
-
-<!-- =========================
-     CONFIG
-========================= -->
-
-<script src="config.js"></script>
-
-
-<!-- =========================
-     JAVASCRIPT
-========================= -->
-
-<script>
-
-/* =========================
-   BASIC BUSINESS INFO
-========================= */
-
-document.documentElement.style.setProperty(
-    "--main-color",
-    BUSINESS.color
-);
-
-document.getElementById("page-title").textContent =
-    BUSINESS.name + " | Автосервиз " + BUSINESS.city;
-
-document.getElementById("logo-name").textContent =
-    BUSINESS.name.split(" ")[0];
-
-document.getElementById("about-business").textContent =
-    BUSINESS.name;
-
-document.getElementById("footer-business").textContent =
-    BUSINESS.name;
-   
-    document.getElementById("footer-business-bottom").textContent =
-    BUSINESS.name;
-
-document.getElementById("hero-city").textContent =
-    BUSINESS.city;
-
-document.getElementById("footer-city").textContent =
-    BUSINESS.city;
-
-document.getElementById("footer-hours").textContent =
-    BUSINESS.workingHours;
-    /* =========================
-   СНИМКИ
-========================= */
-
-document.querySelector(".about-image").style.backgroundImage =
-    `linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.7)),
-     url("${BUSINESS.aboutImage}")`;
-   
-    document.querySelector(".hero").style.backgroundImage =
-    `linear-gradient(90deg, rgba(0,0,0,0.92), rgba(0,0,0,0.45)),
-     url("${BUSINESS.heroImage}")`;
-
-/* =========================
-   PHONE
-========================= */
-
-const cleanPhone =
-    BUSINESS.phone.replace(/[^0-9+]/g, "");
-
-document.getElementById("header-phone").textContent =
-    BUSINESS.phone;
-
-document.getElementById("header-phone").href =
-    "tel:" + cleanPhone;
-
-document.getElementById("hero-phone").innerHTML =
-    "📞 " + BUSINESS.phone;
-
-document.getElementById("hero-phone").href =
-    "tel:" + cleanPhone;
-
-document.getElementById("contact-phone").textContent =
-    "📞 " + BUSINESS.phone;
-
-document.getElementById("contact-phone").href =
-    "tel:" + cleanPhone;
-    
-    /* =========================
-   CONTACT INFO
-========================= */
-
-document.getElementById("contact-address").textContent =
-    BUSINESS.address;
-
-document.getElementById("contact-email").textContent =
-    BUSINESS.email;
-
-document.getElementById("contact-email").href =
-    "mailto:" + BUSINESS.email;
-
-document.getElementById("contact-hours").textContent =
-    BUSINESS.workingHours;
-
-    /* =========================
-   SOCIAL MEDIA
-========================= */
-
-const facebookLink = document.getElementById("footer-facebook");
-const instagramLink = document.getElementById("footer-instagram");
-
-if (BUSINESS.facebook && BUSINESS.facebook !== "#") {
-    facebookLink.href = BUSINESS.facebook;
-} else {
-    facebookLink.style.display = "none";
-}
-
-if (BUSINESS.instagram && BUSINESS.instagram !== "#") {
-    instagramLink.href = BUSINESS.instagram;
-} else {
-    instagramLink.style.display = "none";
-}
-
-    /* =========================
-   MAP
-========================= */
-
-const map = document.getElementById("business-map");
-
-if (map && BUSINESS.address) {
-    map.src =
-        "https://www.google.com/maps?q=" +
-        encodeURIComponent(BUSINESS.address + ", " + BUSINESS.city) +
-        "&output=embed";
-}
-
-/* =========================
-   SERVICES
-========================= */
-
-const servicesContainer =
-    document.getElementById("services-container");
-
-servicesContainer.innerHTML = "";
-
-BUSINESS.services.forEach(function(service) {
-
-    servicesContainer.innerHTML += `
-
-        <div class="card">
-
-            <div class="icon">
-                ${service.icon}
-            </div>
-
-            <h3>
-                ${service.title}
-            </h3>
-
-            <p>
-                ${service.description}
-            </p>
-
-        </div>
-
-    `;
-
-});
-
-
-/* =========================
-   PRICE LIST
-========================= */
-
-const pricesContainer =
-    document.getElementById("prices-container");
-
-pricesContainer.innerHTML = "";
-
-BUSINESS.prices.forEach(function(item) {
-
-    pricesContainer.innerHTML += `
-
-        <div class="price">
-
-            <span>
-                ${item.service}
-            </span>
-
-            <strong>
-                ${item.price}
-            </strong>
-
-        </div>
-
-    `;
-
-});
-
-
-/* =========================
-   SERVICE DROPDOWN
-========================= */
-
-const serviceSelect =
-    document.getElementById("service");
-
-BUSINESS.services.forEach(function(service) {
-
-    const option =
-        document.createElement("option");
-
-    option.value = service.title;
-    option.textContent = service.title;
-
-    serviceSelect.appendChild(option);
-
-});
-
-
-/* =========================
-   MOBILE MENU
-========================= */
-
-const menuButton =
-    document.querySelector(".menu-button");
-
-const nav =
-    document.querySelector("nav");
-
-menuButton.addEventListener("click", function() {
-
-    nav.classList.toggle("active");
-
-});
-
-
-document.querySelectorAll("nav a").forEach(function(link) {
-
-    link.addEventListener("click", function() {
-
-        nav.classList.remove("active");
-
+    <div class="footer-links">
+     <h3>
+      Бързи връзки
+     </h3>
+     <a href="#services">
+      Услуги
+     </a>
+     <a href="#about">
+      За нас
+     </a>
+     <a href="#prices">
+      Цени
+     </a>
+     <a href="#gallery">
+      Галерия
+     </a>
+     <a href="#reviews">
+      Отзиви
+     </a>
+     <a href="#appointment">
+      Запази час
+     </a>
+    </div>
+    <div>
+     <h3>
+      Последвайте ни
+     </h3>
+     <div class="footer-socials">
+      <a id="footer-facebook" rel="noopener noreferrer" target="_blank">
+       Facebook
+      </a>
+      <a id="footer-instagram" rel="noopener noreferrer" target="_blank">
+       Instagram
+      </a>
+     </div>
+    </div>
+   </div>
+   <div class="footer-bottom">
+    ©
+    <span id="year">
+    </span>
+    <strong id="footer-business-bottom">
+    </strong>
+    • Всички права запазени.
+   </div>
+  </footer>
+  <div aria-label="Галерия" aria-modal="true" class="lightbox" id="lightbox" role="dialog">
+   <button aria-label="Затвори" class="lightbox-close" id="lightbox-close">
+    ×
+   </button>
+   <button aria-label="Предишна снимка" class="lightbox-arrow lightbox-prev" id="lightbox-prev">
+    ‹
+   </button>
+   <img alt="Снимка от галерията" class="lightbox-image" id="lightbox-image"/>
+   <button aria-label="Следваща снимка" class="lightbox-arrow lightbox-next" id="lightbox-next">
+    ›
+   </button>
+  </div>
+  <script src="config.js">
+  </script>
+  <script>
+   (() => {
+    "use strict";
+
+    if (typeof BUSINESS === "undefined") {
+        document.body.innerHTML = '<p style="padding:40px">Липсва config.js</p>';
+        return;
+    }
+
+    const $ = (selector) => document.querySelector(selector);
+    const cleanPhone = (BUSINESS.phone || "").replace(/[^0-9+]/g, "");
+
+    // =========================
+    // BUSINESS INFORMATION
+    // =========================
+    document.documentElement.style.setProperty("--main", BUSINESS.color || "#ff3b30");
+    $("#page-title").textContent = `${BUSINESS.name} | Автосервиз ${BUSINESS.city}`;
+    $("#logo-name").textContent = (BUSINESS.name || "APEX").split(" ")[0];
+    $("#hero-city").textContent = BUSINESS.city;
+    $("#about-business").textContent = BUSINESS.name;
+    $("#footer-business").textContent = BUSINESS.name;
+    $("#footer-business-bottom").textContent = BUSINESS.name;
+    $("#footer-city").textContent = BUSINESS.city;
+    $("#footer-hours").textContent = BUSINESS.workingHours;
+    $("#year").textContent = new Date().getFullYear();
+
+    // =========================
+    // IMAGES
+    // =========================
+    $(".hero").style.backgroundImage =
+        `linear-gradient(90deg, rgba(0,0,0,.92), rgba(0,0,0,.42)), url("${BUSINESS.heroImage}")`;
+
+    $(".about-image").style.backgroundImage =
+        `linear-gradient(rgba(0,0,0,.12), rgba(0,0,0,.55)), url("${BUSINESS.aboutImage}")`;
+
+    // =========================
+    // PHONE & CONTACTS
+    // =========================
+    ["#header-phone", "#hero-phone", "#contact-phone"].forEach((selector, index) => {
+        const element = $(selector);
+        element.href = "tel:" + cleanPhone;
+        element.textContent = (index === 1 ? "📞 " : "") + BUSINESS.phone;
     });
 
-});
-
-
-/* =========================
-   APPOINTMENT FORM
-========================= */
-
-document
-    .getElementById("appointment-form")
-    .addEventListener("submit", function(event) {
-
-        event.preventDefault();
-
-        const name =
-            document.getElementById("name").value;
-
-        const phone =
-            document.getElementById("phone").value;
-
-        const car =
-            document.getElementById("car").value;
-
-        const service =
-            document.getElementById("service").value;
-
-        const message =
-            document.getElementById("message").value;
-
-
-        const subject =
-            encodeURIComponent(
-                "Ново запитване - " +
-                BUSINESS.name
-            );
-
-
-        const body =
-            encodeURIComponent(
-
-                "Име: " + name +
-
-                "\nТелефон: " + phone +
-
-                "\nАвтомобил: " + car +
-
-                "\nУслуга: " + service +
-
-                "\n\nСъобщение:\n" + message
-
-            );
-
-
-        window.location.href =
-            "mailto:" +
-            BUSINESS.email +
-            "?subject=" +
-            subject +
-            "&body=" +
-            body;
-
-    });
-
-    /* =========================
-   SCROLL ANIMATIONS
-========================= */
-
-const revealElements = document.querySelectorAll(
-    ".section-title, .card, .about-image, .about-text, .price, .review, .form, .contact, .gallery-item"
-);
-
-revealElements.forEach(function(element) {
-    element.classList.add("reveal");
-});
-
-const observer = new IntersectionObserver(
-    function(entries) {
-
-        entries.forEach(function(entry) {
-
-            if (entry.isIntersecting) {
-
-                entry.target.classList.add("show");
-
-            } else {
-
-                entry.target.classList.remove("show");
-
-            }
-
-        });
-
-    },
-    {
-        threshold: 0.15
-    }
-);
-
-revealElements.forEach(function(element) {
-    observer.observe(element);
-});
-
-/* =========================
-   GALLERY
-========================= */
-
-const galleryContainer = document.getElementById("gallery-container");
-
-if (galleryContainer && BUSINESS.gallery) {
-
-    BUSINESS.gallery.forEach(function(image) {
-
-        galleryContainer.innerHTML += `
-
-            <div class="gallery-item">
-
-                <img
-                    src="${image}"
-                    alt="${BUSINESS.name} - автомобилен сервиз"
-                    loading="lazy"
-                >
-
-            </div>
-
-        `;
-
-    });
-
-}
-
-    /* =========================
-   REVIEWS
-========================= */
-
-const reviewsContainer = document.getElementById("reviews-container");
-
-if (reviewsContainer && BUSINESS.reviews) {
-
-    BUSINESS.reviews.forEach(function(review) {
-
-        const stars = "★".repeat(review.rating);
-
-        reviewsContainer.innerHTML += `
-
-            <div class="review">
-
-                <div class="stars">
-                    ${stars}
-                </div>
-
-                <p>
-                    ${review.text}
-                </p>
-
-                <strong>${review.name}</strong>
-
-            </div>
-
-        `;
-
-    });
-
-}
-
-/* =========================
-   GALLERY LIGHTBOX
-========================= */
-
-const lightbox = document.getElementById("lightbox");
-const lightboxImage = document.getElementById("lightbox-image");
-const lightboxClose = document.getElementById("lightbox-close");
-    const lightboxPrev = document.getElementById("lightbox-prev");
-const lightboxNext = document.getElementById("lightbox-next");
-
-let currentImageIndex = 0;
-
-galleryContainer.onclick = function(event) {
-
-    const clickedImage = event.target.closest(".gallery-item img");
-
-    if (!clickedImage) return;
-currentImageIndex = BUSINESS.gallery.findIndex(function(image) {
-    return clickedImage.src.includes(image.split("?")[0]);
-});
-    lightboxImage.src = clickedImage.src;
-    lightbox.classList.add("active");
-    document.body.style.overflow = "hidden";
-
-};
-
-function showImage(index) {
-
-    if (index < 0) {
-        index = BUSINESS.gallery.length - 1;
-    }
-
-    if (index >= BUSINESS.gallery.length) {
-        index = 0;
-    }
-
-    currentImageIndex = index;
-    lightboxImage.src = BUSINESS.gallery[currentImageIndex];
-}
-
-lightboxPrev.onclick = function(event) {
-    event.stopPropagation();
-    showImage(currentImageIndex - 1);
-};
-
-lightboxNext.onclick = function(event) {
-    event.stopPropagation();
-    showImage(currentImageIndex + 1);
-};    
-    
-function closeLightbox() {
-
-    lightbox.classList.remove("active");
-    document.body.style.overflow = "";
-
-}
-
-lightboxClose.addEventListener("click", closeLightbox);
-
-lightbox.addEventListener("click", function(event) {
-
-    if (event.target === lightbox) {
-        closeLightbox();
-    }
-
-});
-
-document.addEventListener("keydown", function(event) {
-
-    if (!lightbox.classList.contains("active")) return;
-
-    if (event.key === "Escape") {
-        event.preventDefault();
-        closeLightbox();
-    }
-
-    if (event.key === "ArrowLeft") {
-        event.preventDefault();
-        showImage(currentImageIndex - 1);
-    }
-
-    if (event.key === "ArrowRight") {
-        event.preventDefault();
-        showImage(currentImageIndex + 1);
-    }
-
-});
-
-/* =========================
-   NAVIGATION WITHOUT HISTORY
-========================= */
-
-document.querySelectorAll('a[href^="#"]').forEach(function(link) {
-
-    link.addEventListener("click", function(event) {
-
-        const targetId = this.getAttribute("href");
-
-        if (targetId === "#") return;
-
-        const target = document.querySelector(targetId);
-
-        if (target) {
-            event.preventDefault();
-
-            target.scrollIntoView({
-                behavior: "smooth",
-                block: "start"
-            });
+    $("#contact-address").textContent = BUSINESS.address;
+    $("#contact-email").textContent = BUSINESS.email;
+    $("#contact-email").href = "mailto:" + BUSINESS.email;
+    $("#contact-hours").textContent = BUSINESS.workingHours;
+
+    // =========================
+    // SOCIAL MEDIA
+    // =========================
+    [
+        ["#footer-facebook", "facebook"],
+        ["#footer-instagram", "instagram"]
+    ].forEach(([selector, key]) => {
+        const element = $(selector);
+        const value = BUSINESS[key];
+
+        if (value && value !== "#") {
+            element.href = value;
+        } else {
+            element.style.display = "none";
         }
-
     });
 
-});
-    
-</script>
+    // =========================
+    // MAP
+    // =========================
+    $("#business-map").src =
+        "https://www.google.com/maps?q=" +
+        encodeURIComponent(BUSINESS.mapQuery || `${BUSINESS.address}, ${BUSINESS.city}`) +
+        "&output=embed";
 
-</body>
+    // =========================
+    // DYNAMIC CONTENT
+    // =========================
+    const services = $("#services-container");
+    const prices = $("#prices-container");
+    const select = $("#service");
+    const gallery = $("#gallery-container");
+    const reviews = $("#reviews-container");
+
+    (BUSINESS.services || []).forEach((service) => {
+        services.insertAdjacentHTML(
+            "beforeend",
+            `<article class="card">
+                <div class="icon">${service.icon}</div>
+                <h3>${service.title}</h3>
+                <p>${service.description}</p>
+            </article>`
+        );
+
+        select.add(new Option(service.title, service.title));
+    });
+
+    (BUSINESS.prices || []).forEach((item) => {
+        prices.insertAdjacentHTML(
+            "beforeend",
+            `<div class="price">
+                <span>${item.service}</span>
+                <strong>${item.price}</strong>
+            </div>`
+        );
+    });
+
+    (BUSINESS.gallery || []).forEach((src, index) => {
+        gallery.insertAdjacentHTML(
+            "beforeend",
+            `<button class="gallery-item" type="button" data-index="${index}" aria-label="Отвори снимка ${index + 1}">
+                <img src="${src}" alt="${BUSINESS.name} - галерия ${index + 1}" loading="lazy">
+            </button>`
+        );
+    });
+
+    (BUSINESS.reviews || []).forEach((review) => {
+        const rating = Math.max(0, Math.min(5, review.rating));
+
+        reviews.insertAdjacentHTML(
+            "beforeend",
+            `<article class="review">
+                <div class="stars" aria-label="${rating} от 5 звезди">${"★".repeat(rating)}</div>
+                <p>${review.text}</p>
+                <strong>${review.name}</strong>
+            </article>`
+        );
+    });
+
+    // =========================
+    // MOBILE MENU
+    // =========================
+    const menu = $(".menu-button");
+    const nav = $("#nav");
+
+    menu.addEventListener("click", () => {
+        nav.classList.toggle("active");
+        menu.setAttribute("aria-expanded", nav.classList.contains("active"));
+    });
+
+    nav.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", () => {
+            nav.classList.remove("active");
+            menu.setAttribute("aria-expanded", "false");
+        });
+    });
+
+    // =========================
+    // APPOINTMENT FORM
+    // =========================
+    $("#appointment-form").addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        const subject = encodeURIComponent(`Ново запитване - ${BUSINESS.name}`);
+        const body = encodeURIComponent(
+            `Име: ${$("#name").value}\n` +
+            `Телефон: ${$("#phone").value}\n` +
+            `Автомобил: ${$("#car").value}\n` +
+            `Услуга: ${select.value}\n\n` +
+            `Съобщение:\n${$("#message").value}`
+        );
+
+        location.href = `mailto:${BUSINESS.email}?subject=${subject}&body=${body}`;
+    });
+
+    // =========================
+    // GALLERY LIGHTBOX
+    // =========================
+    const lightbox = $("#lightbox");
+    const lightboxImage = $("#lightbox-image");
+    let currentImage = 0;
+
+    const showImage = (index) => {
+        const images = BUSINESS.gallery || [];
+        if (!images.length) return;
+
+        currentImage = (index + images.length) % images.length;
+        lightboxImage.src = images[currentImage];
+        lightbox.classList.add("active");
+        document.body.style.overflow = "hidden";
+    };
+
+    const closeLightbox = () => {
+        lightbox.classList.remove("active");
+        document.body.style.overflow = "";
+        lightboxImage.removeAttribute("src");
+    };
+
+    gallery.addEventListener("click", (event) => {
+        const item = event.target.closest(".gallery-item");
+        if (item) showImage(Number(item.dataset.index));
+    });
+
+    $("#lightbox-prev").addEventListener("click", (event) => {
+        event.stopPropagation();
+        showImage(currentImage - 1);
+    });
+
+    $("#lightbox-next").addEventListener("click", (event) => {
+        event.stopPropagation();
+        showImage(currentImage + 1);
+    });
+
+    $("#lightbox-close").addEventListener("click", closeLightbox);
+
+    lightbox.addEventListener("click", (event) => {
+        if (event.target === lightbox) closeLightbox();
+    });
+
+    document.addEventListener("keydown", (event) => {
+        if (!lightbox.classList.contains("active")) return;
+
+        if (event.key === "Escape") closeLightbox();
+        if (event.key === "ArrowLeft") showImage(currentImage - 1);
+        if (event.key === "ArrowRight") showImage(currentImage + 1);
+    });
+
+    // =========================
+    // SCROLL REVEAL ANIMATIONS
+    // =========================
+    const revealElements = [
+        ...document.querySelectorAll(
+            ".section-title, .card, .about-image, .about-text, .price, .gallery-item, .review, .form, .contact-item, .map-container"
+        )
+    ];
+
+    const reducedMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    if ("IntersectionObserver" in window && !reducedMotion) {
+        revealElements.forEach((element) => element.classList.add("reveal"));
+
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("show");
+                        observer.unobserve(entry.target);
+                    }
+                });
+            },
+            { threshold: 0.12 }
+        );
+
+        revealElements.forEach((element) => observer.observe(element));
+    }
+})();
+  </script>
+ </body>
 </html>
