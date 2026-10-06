@@ -712,8 +712,75 @@
                 <div class="form-grid">
                     <input autocomplete="name" id="name" name="name" placeholder="Име *" required type="text">
                     <input autocomplete="tel" id="phone" name="phone" placeholder="Телефон *" required type="tel" inputmode="tel">
-                    <input autocomplete="organization" id="make" name="make" placeholder="Марка" type="text">
-                    <input id="model" name="model" placeholder="Модел" type="text">
+                   <input id="make" name="make" placeholder="Марка" type="text" list="car-makes" autocomplete="off">
+                    <datalist id="car-makes">
+    <option value="Abarth">
+    <option value="Alfa Romeo">
+    <option value="Aston Martin">
+    <option value="Audi">
+    <option value="Bentley">
+    <option value="BMW">
+    <option value="Bugatti">
+    <option value="Buick">
+    <option value="BYD">
+    <option value="Cadillac">
+    <option value="Chevrolet">
+    <option value="Chrysler">
+    <option value="Citroën">
+    <option value="Cupra">
+    <option value="Dacia">
+    <option value="Daewoo">
+    <option value="Daihatsu">
+    <option value="Dodge">
+    <option value="DS">
+    <option value="Ferrari">
+    <option value="Fiat">
+    <option value="Ford">
+    <option value="Genesis">
+    <option value="GMC">
+    <option value="Great Wall">
+    <option value="Honda">
+    <option value="Hummer">
+    <option value="Hyundai">
+    <option value="Infiniti">
+    <option value="Isuzu">
+    <option value="Jaguar">
+    <option value="Jeep">
+    <option value="Kia">
+    <option value="Lada">
+    <option value="Lamborghini">
+    <option value="Lancia">
+    <option value="Land Rover">
+    <option value="Lexus">
+    <option value="Lincoln">
+    <option value="Lotus">
+    <option value="Maserati">
+    <option value="Mazda">
+    <option value="McLaren">
+    <option value="Mercedes-Benz">
+    <option value="MG">
+    <option value="MINI">
+    <option value="Mitsubishi">
+    <option value="Nissan">
+    <option value="Opel">
+    <option value="Peugeot">
+    <option value="Polestar">
+    <option value="Porsche">
+    <option value="Renault">
+    <option value="Rolls-Royce">
+    <option value="Saab">
+    <option value="SEAT">
+    <option value="Škoda">
+    <option value="Smart">
+    <option value="Subaru">
+    <option value="Suzuki">
+    <option value="Tesla">
+    <option value="Toyota">
+    <option value="Volkswagen">
+    <option value="Volvo">
+</datalist>
+                   <input id="model" name="model" placeholder="Модел" type="text" list="car-models" autocomplete="off">
+<datalist id="car-models"></datalist>
                     <select id="service" name="service" required style="grid-column:1/-1">
                         <option value="">Избери услуга *</option>
                     </select>
@@ -1108,6 +1175,64 @@
         // ---------------------------------------------------------
         // APPOINTMENT FORM
         // ---------------------------------------------------------
+       const carModels = {
+    "Audi": [
+        "A1", "A3", "A4", "A5", "A6", "A7", "A8",
+        "Q2", "Q3", "Q4 e-tron", "Q5", "Q7", "Q8",
+        "TT", "R8"
+    ],
+
+    "BMW": [
+        "1 Series", "2 Series", "3 Series", "4 Series",
+        "5 Series", "6 Series", "7 Series", "8 Series",
+        "X1", "X2", "X3", "X4", "X5", "X6", "X7",
+        "Z4", "i3", "i4", "i5", "i7", "iX",
+        "M2", "M3", "M4", "M5", "M8"
+    ],
+
+    "Mercedes-Benz": [
+        "A-Class", "B-Class", "C-Class", "E-Class", "S-Class",
+        "CLA", "CLS", "CLE",
+        "GLA", "GLB", "GLC", "GLE", "GLS", "G-Class",
+        "SL", "AMG GT", "EQA", "EQB", "EQE", "EQS"
+    ],
+
+    "Toyota": [
+        "Aygo", "Yaris", "Corolla", "Camry", "C-HR",
+        "Prius", "RAV4", "Highlander", "Land Cruiser",
+        "Hilux", "GR86", "Supra"
+    ],
+
+    "Volkswagen": [
+        "Up!", "Polo", "Golf", "Jetta", "Passat", "Arteon",
+        "T-Cross", "Taigo", "T-Roc", "Tiguan", "Touareg",
+        "Touran", "Sharan", "Caddy", "Transporter",
+        "ID.3", "ID.4", "ID.5", "ID.7", "ID. Buzz"
+    ]
+};
+
+const makeInput = $("#make");
+const modelInput = $("#model");
+const modelList = $("#car-models");
+
+const updateModelSuggestions = () => {
+    const selectedMake = Object.keys(carModels).find(
+        make => make.toLowerCase() === makeInput.value.trim().toLowerCase()
+    );
+
+    modelList.innerHTML = "";
+
+    if (!selectedMake) return;
+
+    carModels[selectedMake].forEach(model => {
+        const option = document.createElement("option");
+        option.value = model;
+        modelList.appendChild(option);
+    });
+};
+
+makeInput.addEventListener("input", updateModelSuggestions);
+makeInput.addEventListener("change", updateModelSuggestions);
         const form = $("#appointment-form");
         const status = $("#form-status");
         const submitButton = $("#submit-button");
